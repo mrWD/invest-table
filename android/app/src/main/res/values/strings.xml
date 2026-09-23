@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">InvestTable</string>
+    <string name="title_activity_main">InvestTable</string>
+    <string name="package_name">com.mrwd.investtable</string>
+    <string name="custom_url_scheme">com.mrwd.investtable</string>
+</resources>

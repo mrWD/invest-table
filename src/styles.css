@@ -1,0 +1,916 @@
+/*
+ * One stylesheet, no framework.
+ *
+ * Colours are the validated data-viz reference palette: series 1 and 2 for the chart,
+ * its chrome greys for everything else, both modes stepped for their own surface rather
+ * than flipped. Light is declared on bare `:root` so it is the fallback; dark is
+ * declared twice — once for the OS setting, once for the in-app toggle — so the toggle
+ * wins in both directions.
+ */
+
+:root {
+  color-scheme: light;
+
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-sunken: #f2f1ed;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --shadow: 0 1px 2px rgba(11, 11, 11, 0.05), 0 8px 24px -16px rgba(11, 11, 11, 0.2);
+
+  /* Chart series. 1 = the balance, 2 = what was paid in to get it. */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --good: #006300;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --gap: 16px;
+
+  --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme='light'])) {
+    color-scheme: dark;
+
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-sunken: #232321;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: none;
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --good: #0ca30c;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --surface-sunken: #232321;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: none;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --good: #0ca30c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* The WebView lets a long press select table text and pop the magnifier; in an app
+     that reads as a glitch rather than a feature. Inputs opt back in below. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* Nothing here scrolls sideways; this stops the rubber-band drift on iOS. */
+  overscroll-behavior-y: none;
+}
+
+input,
+output,
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ---------- layout ---------- */
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--gap) calc(32px + env(safe-area-inset-bottom));
+  padding-left: max(var(--gap), env(safe-area-inset-left));
+  padding-right: max(var(--gap), env(safe-area-inset-right));
+}
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: calc(12px + env(safe-area-inset-top)) 0 12px;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  flex: 1;
+  min-width: 0;
+}
+
+.masthead .sub {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--gap);
+  margin-top: var(--gap);
+}
+
+.card > h2 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card > .card-note {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-head h2 {
+  margin: 0;
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- controls ---------- */
+
+.field + .field {
+  margin-top: 18px;
+}
+
+.field-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.field-head label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.field-head .hint {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: end;
+}
+
+.field-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-sunken);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  transition: border-color 0.15s;
+}
+
+.field-input:focus-within {
+  border-color: var(--series-1);
+}
+
+.field-input input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 9px 0;
+  font: inherit;
+  font-size: 16px; /* Anything under 16px makes iOS Safari zoom on focus. */
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.field-input input:focus {
+  outline: none;
+}
+
+/* The spinners are a desktop affordance the sliders already cover, and they crowd
+   the field on narrow screens. */
+.field-input input::-webkit-outer-spin-button,
+.field-input input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.field-input input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.field-input .unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/*
+ * The unit that is also a control: "% / month" with a chevron, sitting where the static
+ * unit sits. Styled to read as a label first and a control second — it should invite a
+ * tap without competing with the number beside it.
+ */
+.unit-picker select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 4px 18px 4px 6px;
+  margin-inline-end: -4px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 9px) calc(50% + 1px), calc(100% - 5px) calc(50% + 1px);
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+
+[dir='rtl'] .unit-picker select {
+  padding: 4px 6px 4px 18px;
+  background-position: 9px calc(50% + 1px), 5px calc(50% + 1px);
+}
+
+.unit-picker select:hover {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+.unit-picker select:focus-visible {
+  outline: 2px solid var(--series-1);
+  outline-offset: 1px;
+}
+
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10px 0 0;
+  background: none;
+  /* A slider thumb this side of 24px is hard to catch on a phone. */
+  height: 24px;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--grid);
+}
+
+input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--grid);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--series-1);
+  border: 2px solid var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--series-1);
+  border: 2px solid var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+}
+
+input[type='range']:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ---------- segmented control & buttons ---------- */
+
+.segmented {
+  display: inline-flex;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  gap: 2px;
+}
+
+.segmented button {
+  appearance: none;
+  border: 0;
+  background: none;
+  border-radius: 7px;
+  padding: 5px 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--ink-2);
+  cursor: pointer;
+  min-width: 34px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.ghost-button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  /* The class is worn by both a <button> and an <a>; the link would otherwise
+     underline and stop looking like the button beside it. */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ghost-button:hover {
+  color: var(--ink);
+  border-color: var(--axis);
+}
+
+/* ---------- summary ---------- */
+
+.hero {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero .value {
+  font-size: clamp(34px, 9vw, 52px);
+  font-weight: 680;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.hero .currency {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 550;
+  color: var(--ink-2);
+}
+
+.hero-caption {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.tile {
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.tile .label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.tile .value {
+  font-size: 18px;
+  font-weight: 620;
+  letter-spacing: -0.01em;
+}
+
+.tile .value .unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-inline-start: 4px;
+}
+
+.tile.is-earned .value {
+  color: var(--good);
+}
+
+.readout {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-inline-start: 2px solid var(--series-1);
+  background: var(--surface-sunken);
+  border-start-end-radius: var(--radius-sm);
+  border-end-end-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.readout strong {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- chart ---------- */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.legend-key {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.chart-frame {
+  position: relative;
+  touch-action: pan-y;
+  /*
+   * Pinned left-to-right in every language, Arabic included. Time reading forwards to the
+   * right is the convention in RTL scripts too, and the tooltip's `left` is computed from
+   * the same SVG coordinates the axis uses — letting the container flip would put the
+   * label on the opposite side of the crosshair.
+   */
+  direction: ltr;
+}
+
+.chart-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-tooltip {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+  padding: 8px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.chart-tooltip .when {
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.chart-tooltip .row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.chart-tooltip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------- year table ---------- */
+
+.year {
+  border-top: 1px solid var(--border);
+}
+
+.year:first-of-type {
+  border-top: 0;
+}
+
+.year-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 13px 0;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: start;
+}
+
+.year-head .chevron {
+  color: var(--muted);
+  font-size: 11px;
+  width: 12px;
+  flex-shrink: 0;
+  transition: transform 0.18s;
+}
+
+.year-head[aria-expanded='true'] .chevron {
+  transform: rotate(90deg);
+}
+
+/* The closed chevron points into the text, so in Arabic it points the other way. Open,
+   it points down in both directions and needs no mirroring. */
+[dir='rtl'] .year-head .chevron {
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .year-head[aria-expanded='true'] .chevron {
+  transform: rotate(90deg);
+}
+
+.year-head .name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.year-head .end {
+  margin-inline-start: auto;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  text-align: end;
+}
+
+.year-head .dividend {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.months {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 10px;
+}
+
+.months th {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-align: end;
+  padding: 4px 0 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.months th:first-child,
+.months td:first-child {
+  text-align: start;
+  width: 2.5em;
+  color: var(--muted);
+}
+
+.months td {
+  padding: 5px 0;
+  text-align: end;
+  font-size: 14px;
+}
+
+.months tbody tr + tr td {
+  border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+.months .balance {
+  font-weight: 550;
+}
+
+.months .income {
+  color: var(--ink-2);
+}
+
+/* ---------- converter ---------- */
+
+.rates {
+  margin-top: 18px;
+}
+
+.rate-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+}
+
+.rate-row:first-of-type {
+  border-top: 0;
+}
+
+.rate-row .pair {
+  font-size: 14px;
+  font-weight: 550;
+  width: 5.5em;
+  flex-shrink: 0;
+}
+
+.rate-row input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface-sunken);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font: inherit;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  text-align: end;
+}
+
+.rate-row input:focus {
+  outline: none;
+  border-color: var(--series-1);
+}
+
+.converted {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.rates-meta {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------- support & other projects ---------- */
+
+.support-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.support-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.support-link:hover {
+  border-color: var(--series-1);
+  transform: translateY(-1px);
+}
+
+.support-link svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: var(--series-2);
+}
+
+/* Names only, so two narrow columns fit where one wide one used to. */
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 2px 12px;
+}
+
+.projects li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  min-width: 0;
+}
+
+.project-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--surface-sunken);
+  font-size: 15px;
+  /* The emoji is the artwork; a tinted tile per project would fight the palette. */
+  line-height: 1;
+}
+
+.project-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- footer ---------- */
+
+.preferences {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+/*
+ * A real <select> rather than a custom menu: twenty options is past what a segmented
+ * control can hold, and the native element gets the phone's own picker, keyboard
+ * type-ahead and screen-reader support for free.
+ */
+.language-picker select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 30px 6px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  /* The chevron is a background image so it does not need an extra element; it sits on
+     the trailing edge, which the RTL rule below moves to the other side. */
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(50% + 1px), calc(100% - 11px) calc(50% + 1px);
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+
+[dir='rtl'] .language-picker select {
+  padding: 6px 12px 6px 30px;
+  background-position: 15px calc(50% + 1px), 11px calc(50% + 1px);
+}
+
+.language-picker select:focus-visible {
+  outline: 2px solid var(--series-1);
+  outline-offset: 1px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.colophon {
+  margin: 26px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.colophon p {
+  margin: 0 0 8px;
+}
+
+.colophon a {
+  color: var(--ink-2);
+}
+
+/* ---------- wide screens ---------- */
+
+@media (min-width: 720px) {
+  body {
+    font-size: 15px;
+  }
+
+  .app {
+    padding-bottom: 48px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  .split > .card {
+    margin-top: var(--gap);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
