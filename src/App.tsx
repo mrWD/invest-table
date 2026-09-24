@@ -7,6 +7,7 @@ import { Summary } from './components/Summary.tsx'
 import { Support } from './components/Support.tsx'
 import { YearTable } from './components/YearTable.tsx'
 import { CURRENCY_SYMBOLS } from './lib/format.ts'
+import { donationsHidden } from './lib/from-app.ts'
 import { project } from './lib/projection.ts'
 import { useI18n } from './i18n/index.ts'
 import { useSettings, type Theme } from './store/settings.ts'
@@ -80,8 +81,9 @@ export function App() {
         </div>
 
         {/* Full width, below the split: these are about the author rather than the
-            projection, and they read better as a footer than as a third column. */}
-        <Support i18n={i18n} />
+            projection, and they read better as a footer than as a third column.
+            App Store 3.1.1: no donation buttons inside the app — see lib/from-app. */}
+        {!donationsHidden() && <Support i18n={i18n} />}
         <MoreFromAuthor i18n={i18n} />
       </main>
 
