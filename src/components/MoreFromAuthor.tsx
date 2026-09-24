@@ -1,4 +1,5 @@
 import type { I18n } from '../i18n/index.ts'
+import { siteLink } from '../lib/from-app.ts'
 
 /**
  * The author's other projects — named, not linked.
@@ -34,7 +35,7 @@ export function MoreFromAuthor({ i18n }: { i18n: I18n }) {
         <h2 id="projects-heading">{i18n.t('projects.title')}</h2>
         <a
           className="ghost-button"
-          href="https://mrwd.github.io/"
+          href={siteLink('https://mrwd.github.io/')}
           target="_blank"
           rel="noreferrer noopener"
         >
