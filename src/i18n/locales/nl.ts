@@ -16,11 +16,15 @@ export const nl = {
 
   'summary.after': { one: 'Na {count} jaar', other: 'Na {count} jaar' },
   'summary.caption': 'saldo, met elk rendement herbelegd',
+  'summary.note': 'Bij een constant rendement: een projectie, geen voorspelling.',
   'summary.paidIn': 'Ingelegd',
   'summary.earned': 'Verdiend',
+  'summary.lost': 'Verloren',
   'summary.dividends': 'Dividend, per maand',
   'summary.readout':
-    'Met {deposit} per maand en {rate} rendement op het saldo per maand — ongeveer {daily} per dag — heb je in de tweede maand {income} verdiend en {balance} opzijgezet. Bij {dividend} per jaar zou het eindsaldo {payout} per maand aan dividend uitkeren.',
+    'Met {deposit} per maand en {rate} rendement op het saldo per maand — ongeveer {daily} per dag — zou je in de tweede maand {income} hebben verdiend en {balance} opzij hebben gezet. Bij {dividend} per jaar zou het eindsaldo {payout} per maand aan dividend uitkeren.',
+  'summary.readoutLoss':
+    'Met {deposit} per maand en {rate} verlies op het saldo per maand — ongeveer {daily} per dag — zou je in de tweede maand {income} hebben verloren en {balance} overhouden. Bij {dividend} per jaar zou het eindsaldo {payout} per maand aan dividend uitkeren.',
 
   'controls.title': 'Jouw plan',
   'controls.reset': 'Herstellen',
@@ -77,4 +81,5 @@ export const nl = {
   'footer.privacy':
     'Alles blijft op dit apparaat — er is geen account en geen server die je cijfers bewaart. Alleen de wisselkoersen worden opgehaald, bij open.er-api.com, en zonder die koersen werkt de app ook.',
   'footer.origin': 'Overgezet uit het spreadsheet ‘Revenue Chart’ · build {build}',
+  'footer.licences': 'Opensourcelicenties',
 } satisfies Catalogue

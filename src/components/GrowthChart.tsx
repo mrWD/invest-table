@@ -71,7 +71,8 @@ export function GrowthChart({
 
   // A log axis has nothing to say about zero, and a zero deposit makes every point zero.
   const logUsable = chartScale === 'log' && deposit > 0
-  const top = niceCeiling(projection.finalBalance)
+  // At a loss the money paid in ends above the balance, and its line has to fit too.
+  const top = niceCeiling(Math.max(projection.finalBalance, projection.totalInvested))
   const bottom = logUsable ? Math.max(deposit, 1) : 0
 
   const yTicks = logUsable ? logTicks(bottom, top) : Array.from({ length: 5 }, (_, i) => (top / 4) * i)

@@ -16,11 +16,15 @@ export const ja = {
 
   'summary.after': { other: '{count}年後' },
   'summary.caption': '残高（利益はすべて再投資）',
+  'summary.note': '利回り一定の場合の試算で、予測ではありません。',
   'summary.paidIn': '入金額',
   'summary.earned': '利益',
+  'summary.lost': '損失',
   'summary.dividends': '配当（月あたり）',
   'summary.readout':
-    '毎月 {deposit} を入れ、残高に対して月 {rate}（1日あたり約 {daily}）の利益が出ると、2か月目までに {income} を稼ぎ、{balance} が貯まります。年 {dividend} なら、最終残高は月 {payout} の配当を生みます。',
+    '毎月 {deposit} を入れ、残高に対して月 {rate}（1日あたり約 {daily}）の利益が出たとすると、2か月目までに {income} の利益が出て、{balance} が貯まる計算です。年 {dividend} なら、最終残高は月 {payout} の配当を生む計算です。',
+  'summary.readoutLoss':
+    '毎月 {deposit} を入れ、残高に対して月 {rate}（1日あたり約 {daily}）の損失が出たとすると、2か月目までに {income} を失い、残高は {balance} になる計算です。年 {dividend} なら、最終残高は月 {payout} の配当を生む計算です。',
 
   'controls.title': 'あなたのプラン',
   'controls.reset': 'リセット',
@@ -77,4 +81,5 @@ export const ja = {
   'footer.privacy':
     'すべてこの端末に残ります — アカウントも、数値を預かるサーバーもありません。通信するのは為替レート（open.er-api.com）だけで、それなしでもアプリは動きます。',
   'footer.origin': 'スプレッドシート「Revenue Chart」から移植 · ビルド {build}',
+  'footer.licences': 'オープンソースライセンス',
 } satisfies Catalogue

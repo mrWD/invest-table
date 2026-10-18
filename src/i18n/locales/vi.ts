@@ -16,11 +16,15 @@ export const vi = {
 
   'summary.after': { other: 'Sau {count} năm' },
   'summary.caption': 'số dư, toàn bộ lợi nhuận được tái đầu tư',
+  'summary.note': 'Với lãi suất không đổi: đây là ước tính, không phải dự báo.',
   'summary.paidIn': 'Đã nạp',
   'summary.earned': 'Đã kiếm',
+  'summary.lost': 'Đã mất',
   'summary.dividends': 'Cổ tức, mỗi tháng',
   'summary.readout':
-    'Nạp {deposit} mỗi tháng và kiếm {rate} trên số dư mỗi tháng — khoảng {daily} mỗi ngày — đến tháng thứ hai bạn đã kiếm {income} và để dành được {balance}. Với {dividend} mỗi năm, số dư cuối cùng sẽ trả {payout} cổ tức mỗi tháng.',
+    'Nạp {deposit} mỗi tháng và kiếm {rate} trên số dư mỗi tháng — khoảng {daily} mỗi ngày — thì đến tháng thứ hai bạn sẽ kiếm được {income} và để dành được {balance}. Với {dividend} mỗi năm, số dư cuối cùng sẽ trả {payout} cổ tức mỗi tháng.',
+  'summary.readoutLoss':
+    'Nạp {deposit} mỗi tháng và mất {rate} trên số dư mỗi tháng — khoảng {daily} mỗi ngày — thì đến tháng thứ hai bạn sẽ mất {income} và còn lại {balance}. Với {dividend} mỗi năm, số dư cuối cùng sẽ trả {payout} cổ tức mỗi tháng.',
 
   'controls.title': 'Kế hoạch của bạn',
   'controls.reset': 'Đặt lại',
@@ -77,4 +81,5 @@ export const vi = {
   'footer.privacy':
     'Mọi thứ nằm lại trên thiết bị này — không có tài khoản và không có máy chủ nào giữ các con số của bạn. Thứ duy nhất tải về là tỷ giá, từ open.er-api.com, và ứng dụng vẫn chạy khi không có nó.',
   'footer.origin': 'Chuyển từ bảng tính “Revenue Chart” · bản dựng {build}',
+  'footer.licences': 'Giấy phép mã nguồn mở',
 } satisfies Catalogue

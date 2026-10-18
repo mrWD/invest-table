@@ -26,6 +26,7 @@
   --series-1: #2a78d6;
   --series-2: #eb6834;
   --good: #006300;
+  --bad: #b42318;
 
   --radius: 14px;
   --radius-sm: 9px;
@@ -52,6 +53,7 @@
     --series-1: #3987e5;
     --series-2: #d95926;
     --good: #0ca30c;
+    --bad: #f26b5b;
   }
 }
 
@@ -72,6 +74,7 @@
   --series-1: #3987e5;
   --series-2: #d95926;
   --good: #0ca30c;
+  --bad: #f26b5b;
 }
 
 * {
@@ -437,6 +440,13 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
   color: var(--muted);
 }
 
+.hero-note {
+  margin: 2px 0 0;
+  font-size: 12px;
+  /* Not --muted: this is the disclaimer, and it has to be readable, not decorative. */
+  color: var(--ink-2);
+}
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -472,6 +482,10 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 
 .tile.is-earned .value {
   color: var(--good);
+}
+
+.tile.is-lost .value {
+  color: var(--bad);
 }
 
 .readout {
@@ -913,4 +927,29 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* ---------- open-source notices ---------- */
+
+.licences summary {
+  cursor: pointer;
+  color: var(--ink-2);
+}
+
+.licences pre {
+  margin: 8px 0 0;
+  max-height: 50vh;
+  overflow: auto;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  font-size: 11px;
+  line-height: 1.5;
+  /* Licence texts carry long lines; wrapping keeps the page free of sideways scroll. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.rates-meta a {
+  color: var(--ink-2);
 }

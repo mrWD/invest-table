@@ -38,8 +38,13 @@ export const FALLBACK_RATES: Rates = {
 const CACHE_KEY = 'invest-table:rates'
 const ENDPOINT = 'https://open.er-api.com/v6/latest/USD'
 
-/** Rates older than this are refetched on launch; until one arrives the cache is shown. */
-const MAX_AGE_MS = 12 * 60 * 60 * 1000
+/**
+ * Rates older than this are refetched on launch; until one arrives the cache is shown.
+ *
+ * A day, because the feed itself updates once a day and its terms rate-limit anything
+ * more eager (HTTP 429, which `refreshRates` treats like being offline).
+ */
+const MAX_AGE_MS = 24 * 60 * 60 * 1000
 
 interface CachedRates extends Rates {
   fetchedAt: string

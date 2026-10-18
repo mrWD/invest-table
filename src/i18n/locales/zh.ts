@@ -16,11 +16,15 @@ export const zh = {
 
   'summary.after': { other: '{count} 年后' },
   'summary.caption': '余额，收益全部再投入',
+  'summary.note': '按固定收益率计算：这是估算，不是预测。',
   'summary.paidIn': '已投入',
   'summary.earned': '已赚取',
+  'summary.lost': '亏损',
   'summary.dividends': '股息，每月',
   'summary.readout':
-    '每月投入 {deposit}，每月赚取余额的 {rate}（约每天 {daily}），到第二个月你已赚取 {income}，累计 {balance}。按每年 {dividend} 计算，最终余额每月可产生 {payout} 股息。',
+    '若每月投入 {deposit}，每月赚取余额的 {rate}（约每天 {daily}），到第二个月将赚取 {income}，累计 {balance}。按每年 {dividend} 计算，最终余额每月可产生 {payout} 股息。',
+  'summary.readoutLoss':
+    '若每月投入 {deposit}，每月亏损余额的 {rate}（约每天 {daily}），到第二个月将亏损 {income}，余额为 {balance}。按每年 {dividend} 计算，最终余额每月可产生 {payout} 股息。',
 
   'controls.title': '你的方案',
   'controls.reset': '重置',
@@ -76,4 +80,5 @@ export const zh = {
   'footer.privacy':
     '一切都留在这台设备上——没有账号，也没有服务器保存你的数字。唯一联网获取的是汇率，来自 open.er-api.com，没有它应用照常可用。',
   'footer.origin': '移植自「Revenue Chart」表格 · 构建 {build}',
+  'footer.licences': '开源许可',
 } satisfies Catalogue

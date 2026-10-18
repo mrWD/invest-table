@@ -21,7 +21,9 @@ export function Controls({ i18n }: { i18n: I18n }) {
    * figure at full precision, and this is only its reading in the chosen period, rounded
    * to four decimals so "213,8428 % a year" stays a number someone can retype.
    */
-  const shownRate = convertRate(incomeMonthlyPct, 'month', incomePeriod)
+  // Rounded here too: convertRate returns a same-period rate untouched, so on months the
+  // field used to show the stored figure in full — 8 % a year read as 0,6434030122… .
+  const shownRate = Math.round(convertRate(incomeMonthlyPct, 'month', incomePeriod) * 1e4) / 1e4
   const { t, fmt } = i18n
   const symbol = CURRENCY_SYMBOLS[currency]
 
@@ -87,7 +89,7 @@ export function Controls({ i18n }: { i18n: I18n }) {
         }
         unit={<PeriodPicker i18n={i18n} />}
         value={shownRate}
-        scale="log"
+        scale="signedLog"
         {...INCOME_LIMITS[incomePeriod]}
         sliderLabel={t('controls.slider', { label: t('controls.income') })}
         onChange={setIncome}

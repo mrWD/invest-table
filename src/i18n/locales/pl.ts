@@ -21,11 +21,15 @@ export const pl = {
     other: 'Po {count} latach',
   },
   'summary.caption': 'saldo, cały zysk reinwestowany',
+  'summary.note': 'Przy stałej stopie: to symulacja, nie prognoza.',
   'summary.paidIn': 'Wpłacono',
   'summary.earned': 'Zarobiono',
+  'summary.lost': 'Stracono',
   'summary.dividends': 'Dywidendy, miesięcznie',
   'summary.readout':
-    'Wpłacając {deposit} miesięcznie i zarabiając {rate} salda co miesiąc — około {daily} dziennie — do drugiego miesiąca zarobisz {income} i odłożysz {balance}. Przy {dividend} rocznie końcowe saldo dawałoby {payout} miesięcznie w dywidendach.',
+    'Wpłacając {deposit} miesięcznie i zarabiając {rate} salda co miesiąc — około {daily} dziennie — do drugiego miesiąca zarobiono by {income} i odłożono by {balance}. Przy {dividend} rocznie końcowe saldo dawałoby {payout} miesięcznie w dywidendach.',
+  'summary.readoutLoss':
+    'Wpłacając {deposit} miesięcznie i tracąc {rate} salda co miesiąc — około {daily} dziennie — do drugiego miesiąca stracono by {income}, a na koncie zostałoby {balance}. Przy {dividend} rocznie końcowe saldo dawałoby {payout} miesięcznie w dywidendach.',
 
   'controls.title': 'Twój plan',
   'controls.reset': 'Resetuj',
@@ -87,4 +91,5 @@ export const pl = {
   'footer.privacy':
     'Wszystko zostaje na tym urządzeniu — nie ma konta ani serwera przechowującego Twoje liczby. Pobierane są wyłącznie kursy walut, z open.er-api.com, a aplikacja działa również bez nich.',
   'footer.origin': 'Przeniesione z arkusza „Revenue Chart” · build {build}',
+  'footer.licences': 'Licencje open source',
 } satisfies Catalogue

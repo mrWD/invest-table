@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { Controls, CurrencyPicker, LanguagePicker } from './components/Controls.tsx'
 import { Converter } from './components/Converter.tsx'
 import { GrowthChart } from './components/GrowthChart.tsx'
+import { Licences } from './components/Licences.tsx'
 import { MoreFromAuthor } from './components/MoreFromAuthor.tsx'
 import { Summary } from './components/Summary.tsx'
 import { Support } from './components/Support.tsx'
@@ -108,6 +109,7 @@ export function App() {
         <p>{t('footer.disclaimer')}</p>
         <p>{t('footer.privacy')}</p>
         <p>{t('footer.origin', { build: __BUILD_TIME__ })}</p>
+        <Licences label={t('footer.licences')} />
       </footer>
     </div>
   )

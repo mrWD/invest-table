@@ -16,11 +16,15 @@ export const id = {
 
   'summary.after': { other: 'Setelah {count} tahun' },
   'summary.caption': 'saldo, seluruh imbal hasil ditanam kembali',
+  'summary.note': 'Dengan imbal hasil tetap: ini proyeksi, bukan ramalan.',
   'summary.paidIn': 'Disetor',
   'summary.earned': 'Diperoleh',
+  'summary.lost': 'Rugi',
   'summary.dividends': 'Dividen, per bulan',
   'summary.readout':
-    'Dengan setoran {deposit} per bulan dan imbal hasil {rate} dari saldo tiap bulan — sekitar {daily} per hari — pada bulan kedua Anda memperoleh {income} dan menyisihkan {balance}. Pada {dividend} per tahun, saldo akhir akan membayar {payout} per bulan sebagai dividen.',
+    'Dengan setoran {deposit} per bulan dan imbal hasil {rate} dari saldo tiap bulan — sekitar {daily} per hari — pada bulan kedua Anda akan memperoleh {income} dan menyisihkan {balance}. Pada {dividend} per tahun, saldo akhir akan membayar {payout} per bulan sebagai dividen.',
+  'summary.readoutLoss':
+    'Dengan setoran {deposit} per bulan dan kerugian {rate} dari saldo tiap bulan — sekitar {daily} per hari — pada bulan kedua Anda akan rugi {income} dan tersisa {balance}. Pada {dividend} per tahun, saldo akhir akan membayar {payout} per bulan sebagai dividen.',
 
   'controls.title': 'Rencana Anda',
   'controls.reset': 'Setel ulang',
@@ -77,4 +81,5 @@ export const id = {
   'footer.privacy':
     'Semuanya tetap di perangkat ini — tidak ada akun dan tidak ada server yang menyimpan angka Anda. Yang diambil dari jaringan hanya kurs mata uang, dari open.er-api.com, dan aplikasi tetap jalan tanpanya.',
   'footer.origin': 'Dialihkan dari lembar kerja “Revenue Chart” · build {build}',
+  'footer.licences': 'Lisensi sumber terbuka',
 } satisfies Catalogue

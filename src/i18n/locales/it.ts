@@ -16,11 +16,15 @@ export const it = {
 
   'summary.after': { one: 'Dopo {count} anno', other: 'Dopo {count} anni' },
   'summary.caption': 'saldo, con ogni rendimento reinvestito',
+  'summary.note': 'A tasso costante: una proiezione, non una previsione.',
   'summary.paidIn': 'Versato',
   'summary.earned': 'Guadagnato',
+  'summary.lost': 'Perso',
   'summary.dividends': 'Dividendi, al mese',
   'summary.readout':
-    'Versando {deposit} al mese e guadagnando {rate} del saldo ogni mese — circa {daily} al giorno — al secondo mese hai guadagnato {income} e messo da parte {balance}. Con {dividend} all’anno, il saldo finale pagherebbe {payout} al mese in dividendi.',
+    'Versando {deposit} al mese e guadagnando {rate} del saldo ogni mese — circa {daily} al giorno — al secondo mese avresti guadagnato {income} e messo da parte {balance}. Con {dividend} all’anno, il saldo finale pagherebbe {payout} al mese in dividendi.',
+  'summary.readoutLoss':
+    'Versando {deposit} al mese e perdendo {rate} del saldo ogni mese — circa {daily} al giorno — al secondo mese avresti perso {income} e ti resterebbero {balance}. Con {dividend} all’anno, il saldo finale pagherebbe {payout} al mese in dividendi.',
 
   'controls.title': 'Il tuo piano',
   'controls.reset': 'Reimposta',
@@ -77,4 +81,5 @@ export const it = {
   'footer.privacy':
     'Tutto resta su questo dispositivo: non c’è alcun account né un server che conservi i tuoi numeri. L’unica cosa scaricata sono i tassi di cambio, da open.er-api.com, e l’app funziona anche senza.',
   'footer.origin': 'Portato dal foglio di calcolo «Revenue Chart» · build {build}',
+  'footer.licences': 'Licenze open source',
 } satisfies Catalogue

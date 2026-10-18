@@ -16,11 +16,15 @@ export const tr = {
 
   'summary.after': { one: '{count} yıl sonra', other: '{count} yıl sonra' },
   'summary.caption': 'bakiye, tüm getiri yeniden yatırılmış',
+  'summary.note': 'Sabit getiriyle: bu bir tahmin değil, bir hesaplamadır.',
   'summary.paidIn': 'Yatırılan',
   'summary.earned': 'Kazanılan',
+  'summary.lost': 'Kaybedilen',
   'summary.dividends': 'Temettü, aylık',
   'summary.readout':
-    'Ayda {deposit} yatırıp bakiyenin her ay {rate} kadarını kazanınca — günde yaklaşık {daily} — ikinci ayın sonunda {income} kazanmış ve {balance} biriktirmiş olursunuz. Yılda {dividend} ile son bakiye ayda {payout} temettü öderdi.',
+    'Ayda {deposit} yatırıp bakiyenin her ay {rate} kadarını kazansaydınız — günde yaklaşık {daily} — ikinci ayın sonunda {income} kazanmış ve {balance} biriktirmiş olurdunuz. Yılda {dividend} ile son bakiye ayda {payout} temettü öderdi.',
+  'summary.readoutLoss':
+    'Ayda {deposit} yatırıp bakiyenin her ay {rate} kadarını kaybetseydiniz — günde yaklaşık {daily} — ikinci ayın sonunda {income} kaybetmiş olurdunuz ve elinizde {balance} kalırdı. Yılda {dividend} ile son bakiye ayda {payout} temettü öderdi.',
 
   'controls.title': 'Planınız',
   'controls.reset': 'Sıfırla',
@@ -77,4 +81,5 @@ export const tr = {
   'footer.privacy':
     'Her şey bu cihazda kalır — rakamlarınızı tutan bir hesap ya da sunucu yoktur. İnternetten yalnızca döviz kurları alınır, open.er-api.com üzerinden, ve uygulama onlarsız da çalışır.',
   'footer.origin': '“Revenue Chart” hesap tablosundan aktarıldı · yapı {build}',
+  'footer.licences': 'Açık kaynak lisansları',
 } satisfies Catalogue

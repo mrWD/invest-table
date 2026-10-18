@@ -105,6 +105,11 @@ export function Converter({ finalBalance, i18n }: { finalBalance: number; i18n: 
 
       <p className="rates-meta">
         <span>{describe(rates, i18n)}</span>
+        {/* ExchangeRate-API's open endpoint asks for this credit, in these words and
+            linked, wherever its rates are shown — so it is not translated. */}
+        <a href="https://www.exchangerate-api.com" target="_blank" rel="noreferrer noopener">
+          Rates By Exchange Rate API
+        </a>
       </p>
     </section>
   )

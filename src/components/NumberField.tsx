@@ -18,7 +18,8 @@ const TRACK = 1000
  * A slider is a coarse instrument; the field beside it is there for exact numbers.
  */
 function roundNice(value: number): number {
-  if (value <= 0) return 0
+  if (value === 0) return 0
+  if (value < 0) return -roundNice(-value)
   const step = 10 ** Math.floor(Math.log10(value)) / 10
   return Math.round(value / step) * step
 }
@@ -51,8 +52,13 @@ export function NumberField({
    * A linear track from 0 to a million puts every realistic monthly payment inside the
    * first pixel. `log` spends the track evenly across the orders of magnitude instead,
    * so 50, 500 and 5 000 are each as easy to hit as the other.
+   *
+   * `signedLog` is the same idea for a range that crosses zero, which a logarithm cannot:
+   * `asinh` is linear near zero and logarithmic further out, in both directions, so −5 %
+   * and +5 % sit as far from zero as each other and a 13 000 % ceiling still does not
+   * bury them.
    */
-  scale?: 'linear' | 'log'
+  scale?: 'linear' | 'log' | 'signedLog'
   onChange: (value: number) => void
 }) {
   const [draft, setDraft] = useState<string | null>(null)
@@ -62,11 +68,29 @@ export function NumberField({
   const floor = Math.max(min, 1)
   const span = Math.log(max / floor)
 
-  const toPosition = (v: number) =>
-    scale === 'linear' ? v : v <= floor ? 0 : Math.round((TRACK * Math.log(v / floor)) / span)
+  // The signed track runs from asinh(min) to asinh(max). Zero gets a position of its own
+  // and snaps there exactly: near zero one notch is about 0,015 %, so without a detent
+  // the slider could pass zero without ever landing on it.
+  const low = Math.asinh(min)
+  const width = Math.asinh(max) - low
+  const zero = Math.round((TRACK * -low) / width)
 
-  const fromPosition = (position: number) =>
-    scale === 'linear' ? position : position === 0 ? min : roundNice(floor * Math.exp((span * position) / TRACK))
+  const toPosition = (v: number) => {
+    if (scale === 'linear') return v
+    if (scale === 'signedLog') return Math.round((TRACK * (Math.asinh(v) - low)) / width)
+    return v <= floor ? 0 : Math.round((TRACK * Math.log(v / floor)) / span)
+  }
+
+  const fromPosition = (position: number) => {
+    if (scale === 'linear') return position
+    if (scale === 'signedLog') {
+      if (position === zero) return 0
+      if (position <= 0) return min
+      if (position >= TRACK) return max
+      return roundNice(Math.sinh(low + (width * position) / TRACK))
+    }
+    return position === 0 ? min : roundNice(floor * Math.exp((span * position) / TRACK))
+  }
 
   return (
     <div className="field">

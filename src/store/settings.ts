@@ -99,13 +99,18 @@ export const LIMITS = {
  * that switching the period silently clamped the rate, and switching how a return is
  * written must never change the projection.
  *
- * The slider is logarithmic, which is what keeps a 13 000 % ceiling from burying the 5–30 %
- * a year that people actually type.
+ * The floor mirrors it: a loss of 50 % a month is 87,5 % a quarter and 99,976 % a year, so
+ * those are the floors, rounded outwards for the same reason. Nothing goes past −100 %: a
+ * return can take everything that was invested, but not more, and the model's
+ * `(1 + pct / 100) ** (1 / months)` has no real answer below it. See DECISIONS.
+ *
+ * The slider is a signed log, which is what keeps a 13 000 % ceiling from burying the 5–30 %
+ * a year that people actually type, and still leaves room either side of zero.
  */
 export const INCOME_LIMITS: Record<RatePeriod, { min: number; max: number; step: number }> = {
-  month: { min: 0, max: 50, step: 0.1 },
-  quarter: { min: 0, max: 240, step: 0.1 },
-  year: { min: 0, max: 13_000, step: 0.1 },
+  month: { min: -50, max: 50, step: 0.1 },
+  quarter: { min: -87.5, max: 240, step: 0.1 },
+  year: { min: -99.98, max: 13_000, step: 0.1 },
 }
 
 const clamp = (value: number, { min, max }: { min: number; max: number }) =>
@@ -136,7 +141,10 @@ export const useSettings = create<Settings & SettingsActions>()(
       setIncome: (pctInPeriod) =>
         setState((state) => {
           const limit = INCOME_LIMITS[state.incomePeriod]
-          const safe = Number.isFinite(pctInPeriod) ? clamp(pctInPeriod, limit) : limit.min
+          // Half-typed text — "" or a lone "-" on the way to a loss — falls back to zero,
+          // not to the floor: the floor is now a 99,98 % loss, and passing through it on
+          // every keystroke would make the whole screen flash red.
+          const safe = Number.isFinite(pctInPeriod) ? clamp(pctInPeriod, limit) : 0
           // Converted once, on the way in. Full precision is kept: what the field shows is
           // rounded for reading, what the model runs on is not.
           return { incomeMonthlyPct: monthlyRate(safe, state.incomePeriod) }

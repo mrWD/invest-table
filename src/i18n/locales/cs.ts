@@ -21,11 +21,15 @@ export const cs = {
     other: 'Po {count} letech',
   },
   'summary.caption': 'zůstatek, veškerý výnos reinvestován',
+  'summary.note': 'Při stálé sazbě: projekce, ne předpověď.',
   'summary.paidIn': 'Vloženo',
   'summary.earned': 'Vyděláno',
+  'summary.lost': 'Ztraceno',
   'summary.dividends': 'Dividendy, měsíčně',
   'summary.readout':
-    'Při vkladu {deposit} měsíčně a výnosu {rate} ze zůstatku každý měsíc — asi {daily} denně — do druhého měsíce vyděláte {income} a odložíte {balance}. Při {dividend} ročně by konečný zůstatek vyplácel {payout} měsíčně na dividendách.',
+    'Při vkladu {deposit} měsíčně a výnosu {rate} ze zůstatku každý měsíc — asi {daily} denně — byste do druhého měsíce vydělali {income} a odložili {balance}. Při {dividend} ročně by konečný zůstatek vyplácel {payout} měsíčně na dividendách.',
+  'summary.readoutLoss':
+    'Při vkladu {deposit} měsíčně a ztrátě {rate} ze zůstatku každý měsíc — asi {daily} denně — byste do druhého měsíce ztratili {income} a zbylo by vám {balance}. Při {dividend} ročně by konečný zůstatek vyplácel {payout} měsíčně na dividendách.',
 
   'controls.title': 'Váš plán',
   'controls.reset': 'Obnovit',
@@ -87,4 +91,5 @@ export const cs = {
   'footer.privacy':
     'Vše zůstává v tomto zařízení — není zde žádný účet ani server, který by vaše čísla uchovával. Stahují se jen kurzy měn, z open.er-api.com, a aplikace funguje i bez nich.',
   'footer.origin': 'Portováno z tabulky „Revenue Chart“ · build {build}',
+  'footer.licences': 'Licence open source',
 } satisfies Catalogue

@@ -16,11 +16,15 @@ export const hi = {
 
   'summary.after': { one: '{count} साल बाद', other: '{count} साल बाद' },
   'summary.caption': 'बैलेंस, पूरा मुनाफ़ा दोबारा लगाया हुआ',
+  'summary.note': 'स्थिर दर पर: यह अनुमान है, भविष्यवाणी नहीं।',
   'summary.paidIn': 'जमा किया',
   'summary.earned': 'कमाया',
+  'summary.lost': 'गँवाया',
   'summary.dividends': 'लाभांश, हर महीने',
   'summary.readout':
-    'हर महीने {deposit} जमा करने और बैलेंस पर हर महीने {rate} कमाने पर — रोज़ लगभग {daily} — दूसरे महीने तक आपने {income} कमाए और {balance} जोड़ लिए। साल में {dividend} की दर से अंतिम बैलेंस हर महीने {payout} लाभांश देता।',
+    'हर महीने {deposit} जमा करने और बैलेंस पर हर महीने {rate} कमाने पर — रोज़ लगभग {daily} — दूसरे महीने तक आप {income} कमाते और {balance} जोड़ लेते। साल में {dividend} की दर से अंतिम बैलेंस हर महीने {payout} लाभांश देता।',
+  'summary.readoutLoss':
+    'हर महीने {deposit} जमा करने और बैलेंस पर हर महीने {rate} गँवाने पर — रोज़ लगभग {daily} — दूसरे महीने तक आप {income} गँवा देते और आपके पास {balance} बचता। साल में {dividend} की दर से अंतिम बैलेंस हर महीने {payout} लाभांश देता।',
 
   'controls.title': 'आपकी योजना',
   'controls.reset': 'रीसेट',
@@ -77,4 +81,5 @@ export const hi = {
   'footer.privacy':
     'सब कुछ इसी डिवाइस पर रहता है — न कोई खाता है, न कोई सर्वर जो आपके आँकड़े रखे। नेटवर्क से सिर्फ़ विनिमय दरें आती हैं, open.er-api.com से, और उनके बिना भी ऐप चलता है।',
   'footer.origin': '“Revenue Chart” स्प्रेडशीट से बनाया गया · बिल्ड {build}',
+  'footer.licences': 'ओपन-सोर्स लाइसेंस',
 } satisfies Catalogue

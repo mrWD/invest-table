@@ -16,11 +16,15 @@ export const ko = {
 
   'summary.after': { other: '{count}년 후' },
   'summary.caption': '잔액, 수익은 전액 재투자',
+  'summary.note': '수익률이 일정하다고 가정한 추정이며, 예측이 아닙니다.',
   'summary.paidIn': '납입액',
   'summary.earned': '수익',
+  'summary.lost': '손실',
   'summary.dividends': '배당, 월',
   'summary.readout':
-    '매달 {deposit}을 넣고 잔액의 {rate}(하루 약 {daily})를 매달 번다면, 두 번째 달까지 {income}을 벌고 {balance}을 모으게 됩니다. 연 {dividend}이면 최종 잔액은 월 {payout}의 배당을 냅니다.',
+    '매달 {deposit}을 넣고 잔액의 {rate}(하루 약 {daily})를 매달 번다면, 두 번째 달까지 {income}을 벌고 {balance}을 모으게 되는 셈입니다. 연 {dividend}이면 최종 잔액은 월 {payout}의 배당을 내는 셈입니다.',
+  'summary.readoutLoss':
+    '매달 {deposit}을 넣고 잔액의 {rate}(하루 약 {daily})를 매달 잃는다면, 두 번째 달까지 {income}을 잃고 {balance}이 남는 셈입니다. 연 {dividend}이면 최종 잔액은 월 {payout}의 배당을 내는 셈입니다.',
 
   'controls.title': '나의 계획',
   'controls.reset': '초기화',
@@ -77,4 +81,5 @@ export const ko = {
   'footer.privacy':
     '모든 것이 이 기기에 남습니다 — 계정도, 숫자를 보관하는 서버도 없습니다. 네트워크로 받아오는 것은 환율(open.er-api.com)뿐이고, 없어도 앱은 동작합니다.',
   'footer.origin': '“Revenue Chart” 스프레드시트에서 이식 · 빌드 {build}',
+  'footer.licences': '오픈 소스 라이선스',
 } satisfies Catalogue

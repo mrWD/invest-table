@@ -34,8 +34,10 @@ store builds.
 5. **Absurd inputs are allowed, but the app does not open on one.** The sheet's 10 % a
    month is reachable and exact; nothing caps anyone at a "sensible" return, and the
    display has to survive the consequences (see `HUGE` in `format.ts` — at the slider
-   maxima the balance reaches 10⁶⁹). The *default* is 8 % a year, deliberately ordinary,
-   because a public TestFlight link makes the first screen a claim. See DECISIONS.
+   maxima the balance reaches 10⁶⁹). Losses are allowed too, down to −50 % a month. The
+   *default* is 8 % a year, deliberately ordinary, because a public TestFlight link makes
+   the first screen a claim, and the figures are always said as a projection, next to the
+   figures. See DECISIONS.
 6. **Twenty languages, and no hard-coded string in a component.** Every catalogue is
    checked against English with `satisfies Catalogue`, so a missing key fails the build.
    Formatting is never hand-rolled either — numbers, compact notation, percentages, dates
@@ -130,7 +132,9 @@ one against a limit of three.
 
 ## TestFlight
 
-Live in open testing as of 2026-08-29, **build 1.0 (1)**:
+Live in open testing since 2026-08-29. Current build **1.0 (2)**, uploaded 2026-09-24,
+approved and in testing, **expires 2026-12-23** (checked through the API on 2026-10-17);
+build 1 expires 2026-11-27. The table below is from the first build:
 
 | | |
 |---|---|
@@ -159,6 +163,21 @@ Two things that only surface in the doing:
 Uploading a new build: `npm run build:native && npx cap sync ios`, archive and export with
 the plist in the scratchpad, bump `CURRENT_PROJECT_VERSION`, then
 `xcrun altool --upload-app -f <ipa> -t ios --apiKey T4T7V43WY7 --apiIssuer $(cat ~/.appstoreconnect/issuer_id)`.
+
+## Store listings — what to answer
+
+- **Google Play, financial features declaration** (required of every app): choose "My app
+  doesn't provide any financial features". Do not tick "financial advice" or "trading" —
+  those put the app under the Financial Services policy and require an Organization
+  account. A calculator that names no product is neither.
+- **App Store Review Notes**: "InvestTable is an offline compound-interest calculator. The
+  user types every figure; the app names no securities, funds or brokers, gives no advice,
+  has no accounts and collects no data. The only network call fetches daily exchange
+  rates from open.er-api.com." Guideline 5.1.1(ix) — financial *services* from a legal
+  entity — does not apply to a calculator; individuals publish these in Finance.
+- **ExchangeRate-API's free endpoint requires the credit "Rates By Exchange Rate API",
+  linked to exchangerate-api.com,** wherever its rates are shown. It is in the converter;
+  it is not translated, on purpose. Their terms also forbid redistributing the rates.
 
 ## Status (as of 2026-08-15)
 

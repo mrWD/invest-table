@@ -16,11 +16,15 @@ export const fr = {
 
   'summary.after': { one: 'Au bout de {count} an', other: 'Au bout de {count} ans' },
   'summary.caption': 'solde, chaque gain réinvesti',
+  'summary.note': 'À taux constant : une projection, pas une prévision.',
   'summary.paidIn': 'Versé',
   'summary.earned': 'Gagné',
+  'summary.lost': 'Perdu',
   'summary.dividends': 'Dividendes, par mois',
   'summary.readout':
-    'En versant {deposit} par mois et en gagnant {rate} du solde chaque mois — environ {daily} par jour — vous avez gagné {income} et mis de côté {balance} au deuxième mois. À {dividend} par an, le solde final verserait {payout} par mois en dividendes.',
+    'En versant {deposit} par mois et en gagnant {rate} du solde chaque mois — environ {daily} par jour — vous auriez gagné {income} et mis de côté {balance} au deuxième mois. À {dividend} par an, le solde final verserait {payout} par mois en dividendes.',
+  'summary.readoutLoss':
+    'En versant {deposit} par mois et en perdant {rate} du solde chaque mois — environ {daily} par jour — vous auriez perdu {income} et il vous resterait {balance} au deuxième mois. À {dividend} par an, le solde final verserait {payout} par mois en dividendes.',
 
   'controls.title': 'Votre plan',
   'controls.reset': 'Réinitialiser',
@@ -77,4 +81,5 @@ export const fr = {
   'footer.privacy':
     'Tout reste sur cet appareil — il n’y a ni compte ni serveur qui conserve vos chiffres. Seuls les taux de change sont récupérés, sur open.er-api.com, et l’application fonctionne sans eux.',
   'footer.origin': 'Porté depuis le tableur « Revenue Chart » · build {build}',
+  'footer.licences': 'Licences open source',
 } satisfies Catalogue

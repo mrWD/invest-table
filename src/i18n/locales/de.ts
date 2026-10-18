@@ -16,11 +16,15 @@ export const de = {
 
   'summary.after': { one: 'Nach {count} Jahr', other: 'Nach {count} Jahren' },
   'summary.caption': 'Guthaben, jede Rendite wieder angelegt',
+  'summary.note': 'Bei konstanter Rendite: eine Hochrechnung, keine Prognose.',
   'summary.paidIn': 'Eingezahlt',
   'summary.earned': 'Verdient',
+  'summary.lost': 'Verloren',
   'summary.dividends': 'Dividenden, pro Monat',
   'summary.readout':
-    'Bei {deposit} im Monat und {rate} Rendite auf das Guthaben pro Monat — etwa {daily} pro Tag — haben Sie bis zum zweiten Monat {income} verdient und {balance} zurückgelegt. Bei {dividend} im Jahr würde das Endguthaben {payout} pro Monat an Dividenden zahlen.',
+    'Bei {deposit} im Monat und {rate} Rendite auf das Guthaben pro Monat — etwa {daily} pro Tag — hätten Sie bis zum zweiten Monat {income} verdient und {balance} zurückgelegt. Bei {dividend} im Jahr würde das Endguthaben {payout} pro Monat an Dividenden zahlen.',
+  'summary.readoutLoss':
+    'Bei {deposit} im Monat und {rate} Verlust auf das Guthaben pro Monat — etwa {daily} pro Tag — hätten Sie bis zum zweiten Monat {income} verloren, und {balance} wären übrig. Bei {dividend} im Jahr würde das Endguthaben {payout} pro Monat an Dividenden zahlen.',
 
   'controls.title': 'Ihr Plan',
   'controls.reset': 'Zurücksetzen',
@@ -77,4 +81,5 @@ export const de = {
   'footer.privacy':
     'Alles bleibt auf diesem Gerät — es gibt kein Konto und keinen Server, der Ihre Zahlen speichert. Geladen werden allein die Wechselkurse, von open.er-api.com, und ohne sie funktioniert die App ebenfalls.',
   'footer.origin': 'Portiert aus der Tabelle „Revenue Chart“ · Build {build}',
+  'footer.licences': 'Open-Source-Lizenzen',
 } satisfies Catalogue

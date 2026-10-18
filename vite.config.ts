@@ -1,6 +1,62 @@
-import { defineConfig } from 'vite'
+import { readdirSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+
+/*
+ * The open-source notices, as `licenses.txt` next to the bundle.
+ *
+ * MIT and the like ask for their notice to travel with the software, and a minified bundle
+ * carries none. The list is read off what the bundle actually contains — every module from
+ * node_modules that Rollup put into a chunk — rather than off package.json, which would
+ * miss what plugins inject (workbox-window) and include what never ships (the Capacitor
+ * CLI). Two things are added by name because they never pass through the bundler: the
+ * native runtimes, which ship inside the iOS and Android apps, and the Workbox runtime that
+ * vite-plugin-pwa writes next to the service worker on the web.
+ */
+function openSourceLicences(native: string[]): Plugin {
+  return {
+    name: 'open-source-licences',
+    apply: 'build',
+    generateBundle(_, bundle) {
+      const dirs = new Set<string>()
+      for (const output of Object.values(bundle)) {
+        if (output.type !== 'chunk') continue
+        for (const id of Object.keys(output.modules)) {
+          const match = /^.*\/node_modules\/(?:@[^/]+\/)?[^/]+(?=\/)/.exec(id.replaceAll('\\', '/'))
+          if (match) dirs.add(match[0])
+        }
+      }
+      for (const name of native) dirs.add(join(process.cwd(), 'node_modules', name))
+
+      const seen = new Set<string>()
+      const sections: string[] = []
+      for (const dir of dirs) {
+        const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8')) as {
+          name: string
+          version: string
+          license?: string
+        }
+        const key = `${pkg.name}@${pkg.version}`
+        if (seen.has(key)) continue
+        seen.add(key)
+        const file = readdirSync(dir).find((f) => /^(licen[cs]e|copying)/i.test(f))
+        const text = file
+          ? readFileSync(join(dir, file), 'utf8').trim()
+          : `${pkg.license ?? 'Licence not stated'} (the package ships no licence file)`
+        sections.push(`${key}\n${'-'.repeat(key.length)}\n${text}`)
+      }
+      sections.sort((a, b) => a.localeCompare(b))
+
+      this.emitFile({
+        type: 'asset',
+        fileName: 'licenses.txt',
+        source: `InvestTable is built with these open-source packages.\n\n${sections.join('\n\n\n')}\n`,
+      })
+    },
+  }
+}
 
 // GitHub Pages serves the app from /<repo>/, other hosts from the root.
 // BASE_PATH is set by the deploy workflow; local dev and preview stay at '/'.
@@ -24,6 +80,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    openSourceLicences(['@capacitor/ios', '@capacitor/android', 'workbox-core']),
     VitePWA({
       registerType: 'autoUpdate',
       // Emits a worker whose only job is to unregister itself and empty its caches, so
@@ -51,6 +108,8 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: 'index.html',
+        // The default set plus licenses.txt, so the notices open offline like everything else.
+        globPatterns: ['**/*.{js,css,html,txt}'],
         // The exchange rates are the only network call the app makes, and it works
         // without them. Cached so an offline launch shows the last known rates
         // instead of the bundled fallback.

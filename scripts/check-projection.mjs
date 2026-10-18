@@ -155,11 +155,49 @@ for (const period of ['quarter', 'year']) {
   })
 }
 
+/*
+ * Losses. The sheet never had a negative rate, so there is nothing to read off a
+ * screenshot; these hold the model to the closed form of the same recurrence instead —
+ * n deposits of d, each compounding at r from the month after it was paid:
+ * d · ((1 + r)^n − 1) / r — and to the two things a loss must never do: push the balance
+ * below the month's own deposit, or show up as a gain.
+ */
+console.log('losses')
+const closedForm = (d, r, n) => (r === 0 ? d * n : (d * ((1 + r) ** n - 1)) / r)
+for (const [pct, period] of [[-1, 'month'], [-10, 'year'], [-50, 'month'], [-87.5, 'quarter'], [-99.98, 'year']]) {
+  for (const years of [1, 10, 30]) {
+    const p = project({ deposit: 100, incomePct: pct, incomePeriod: period, dividendPct: 2, years })
+    const r = monthlyRate(pct, period) / 100
+    const n = years * 12
+    // Each month rounds to the cent, and at a loss earlier rounding only shrinks, so the
+    // drift is at most half a cent a month.
+    near(`${pct} % a ${period}, ${years}y, against the closed form`, p.finalBalance, closedForm(100, r, n), 0.005 * n)
+    periodChecks++
+    if (p.months.some((m) => m.balance < 100)) {
+      failures++
+      console.error(`  FAIL  ${pct} % a ${period}, ${years}y: a balance fell below the deposit`)
+    }
+    periodChecks++
+    if (!(p.totalEarned < 0)) {
+      failures++
+      console.error(`  FAIL  ${pct} % a ${period}, ${years}y: a loss reads as ${p.totalEarned}`)
+    }
+  }
+}
+near('a 10 % yearly loss round-trips', convertRate(monthlyRate(-10, 'year'), 'month', 'year'), -10, 1e-9)
+// The three floors in INCOME_LIMITS describe one plan; switching period must not clamp it.
+near('−50 % a month is −87,5 % a quarter', convertRate(-50, 'month', 'quarter'), -87.5, 1e-9)
+periodChecks++
+if (!(convertRate(-50, 'month', 'year') >= -99.98)) {
+  failures++
+  console.error('  FAIL  the yearly floor is above −50 % a month')
+}
+
 const total =
   CASES.reduce((n, c) => n + Object.keys(c.months).length * 2 + c.dividends.length + 1, 0) +
   periodChecks
 if (failures) {
-  console.error(`\n${failures} of ${total} checks disagree with the spreadsheet.`)
+  console.error(`\n${failures} of ${total} checks fail.`)
   process.exit(1)
 }
-console.log(`\nAll ${total} checks match the spreadsheet.`)
+console.log(`\nAll ${total} checks pass: the spreadsheet's values, period conversion and losses.`)

@@ -26,6 +26,14 @@ export function Summary({
   // period the field was showing when it was typed.
   const monthly = incomeMonthlyPct
 
+  /*
+   * A loss is said in words, not with a minus sign. "Earned −1 200" makes the reader do
+   * the negation, and the readout sentence would have to say "earning −0,5 %"; so the
+   * figures go in as magnitudes and the wording carries the direction.
+   */
+  const losing = monthly < 0
+  const lost = projection.totalEarned < 0
+
   return (
     <section className="card" aria-labelledby="summary-heading">
       <h2 id="summary-heading">{t('summary.after', { count: years })}</h2>
@@ -35,6 +43,8 @@ export function Summary({
         <span className="currency">{symbol}</span>
       </div>
       <p className="hero-caption">{t('summary.caption')}</p>
+      {/* The footer has the full disclaimer; this is the part that has to sit by the number. */}
+      <p className="hero-note">{t('summary.note')}</p>
 
       {/*
         Shortened, not spelled out. At the rates this sheet was built for the ten-year
@@ -45,7 +55,9 @@ export function Summary({
       <div className="tiles">
         {[
           { label: t('summary.paidIn'), value: projection.totalInvested, className: 'tile' },
-          { label: t('summary.earned'), value: projection.totalEarned, className: 'tile is-earned' },
+          lost
+            ? { label: t('summary.lost'), value: -projection.totalEarned, className: 'tile is-lost' }
+            : { label: t('summary.earned'), value: projection.totalEarned, className: 'tile is-earned' },
           {
             label: t('summary.dividends'),
             value: projection.finalDividendPerMonth,
@@ -64,11 +76,11 @@ export function Summary({
 
       {secondMonth ? (
         <p className="readout">
-          {t('summary.readout', {
+          {t(losing ? 'summary.readoutLoss' : 'summary.readout', {
             deposit: fmt.amount(deposit, symbol),
-            rate: fmt.percent(monthly),
-            daily: fmt.percent(dailyEquivalent(monthly)),
-            income: fmt.amount(secondMonth.income, symbol),
+            rate: fmt.percent(Math.abs(monthly)),
+            daily: fmt.percent(Math.abs(dailyEquivalent(monthly))),
+            income: fmt.amount(Math.abs(secondMonth.income), symbol),
             balance: fmt.amount(secondMonth.balance, symbol),
             dividend: fmt.percent(dividendPct),
             payout: fmt.amount(projection.finalDividendPerMonth, symbol),

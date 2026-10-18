@@ -23,11 +23,15 @@ export const en = {
 
   'summary.after': { one: 'After {count} year', other: 'After {count} years' } as Plural,
   'summary.caption': 'balance, with every return reinvested',
+  'summary.note': 'At a constant rate: a projection, not a forecast.',
   'summary.paidIn': 'Paid in',
   'summary.earned': 'Earned',
+  'summary.lost': 'Lost',
   'summary.dividends': 'Dividends, per month',
   'summary.readout':
-    'Paying in {deposit} a month and earning {rate} of the balance each month — about {daily} a day — you have earned {income} and put aside {balance} by the second month. At {dividend} a year, the final balance would pay {payout} a month in dividends.',
+    'Paying in {deposit} a month and earning {rate} of the balance each month — about {daily} a day — you would have earned {income} and put aside {balance} by the second month. At {dividend} a year, the final balance would pay {payout} a month in dividends.',
+  'summary.readoutLoss':
+    'Paying in {deposit} a month and losing {rate} of the balance each month — about {daily} a day — you would have lost {income} and have {balance} left by the second month. At {dividend} a year, the final balance would pay {payout} a month in dividends.',
 
   'controls.title': 'Your plan',
   'controls.reset': 'Reset',
@@ -84,6 +88,7 @@ export const en = {
   'footer.privacy':
     'Everything stays on this device — there is no account and no server holding your figures. Exchange rates are the one thing fetched, from open.er-api.com, and the app works without them.',
   'footer.origin': 'Ported from the “Revenue Chart” spreadsheet · build {build}',
+  'footer.licences': 'Open-source licences',
 }
 
 export type Catalogue = typeof en

@@ -16,11 +16,15 @@ export const pt = {
 
   'summary.after': { one: 'Depois de {count} ano', other: 'Depois de {count} anos' },
   'summary.caption': 'saldo, com todo o rendimento reinvestido',
+  'summary.note': 'Com taxa constante: uma projeção, não uma previsão.',
   'summary.paidIn': 'Aportado',
   'summary.earned': 'Ganho',
+  'summary.lost': 'Perdido',
   'summary.dividends': 'Dividendos, por mês',
   'summary.readout':
-    'Aportando {deposit} por mês e ganhando {rate} do saldo a cada mês — cerca de {daily} por dia — no segundo mês você terá ganho {income} e guardado {balance}. A {dividend} ao ano, o saldo final pagaria {payout} por mês em dividendos.',
+    'Aportando {deposit} por mês e ganhando {rate} do saldo a cada mês — cerca de {daily} por dia — no segundo mês você teria ganho {income} e guardado {balance}. A {dividend} ao ano, o saldo final pagaria {payout} por mês em dividendos.',
+  'summary.readoutLoss':
+    'Aportando {deposit} por mês e perdendo {rate} do saldo a cada mês — cerca de {daily} por dia — no segundo mês você teria perdido {income} e ficaria com {balance}. A {dividend} ao ano, o saldo final pagaria {payout} por mês em dividendos.',
 
   'controls.title': 'Seu plano',
   'controls.reset': 'Redefinir',
@@ -77,4 +81,5 @@ export const pt = {
   'footer.privacy':
     'Tudo fica neste dispositivo — não há conta nem servidor guardando seus números. A única coisa baixada são as taxas de câmbio, de open.er-api.com, e o app funciona sem elas.',
   'footer.origin': 'Portado da planilha “Revenue Chart” · build {build}',
+  'footer.licences': 'Licenças de código aberto',
 } satisfies Catalogue

@@ -150,6 +150,47 @@ from it is in no position to tell its owner that his own figures are unreasonabl
 inputs stay open and the *display* copes: past a quadrillion, figures go scientific
 ("4,94 × 10⁶⁹"), and the log axis thins its gridlines to six however many decades it spans.
 
+## Losses are allowed, down to −50 % a month
+
+The sheet only ever went up, and so did the app: the rate's floor was 0. That left the
+footer's own sentence — real returns "can be negative" — as something the calculator could
+not show. The owner asked for losses, and the floor is now a loss of 50 % a month, mirrored
+from the ceiling: 87,5 % a quarter and 99,976 % a year, rounded outwards so that switching
+the period never clamps the rate. Nothing goes below −100 %: a return can take everything
+that was put in, but not more.
+
+- **The model needed nothing.** The recurrence holds for any rate above −100 %, and at a
+  loss the balance never drops below the month's own deposit — it settles towards
+  deposit ÷ |r|, which is why 100 € a month at −50 % a month ends at exactly 200 €.
+  `npm run check` now holds the model to the closed form for five negative rates, and to
+  those two properties.
+- **The slider is a signed log.** `asinh` is linear near zero and logarithmic further out,
+  in both directions, so −5 % and +5 % sit as far from zero as each other while 13 000 % a
+  year still fits. Zero has a detent: one notch near it is about 0,015 %, and without one
+  the thumb steps over zero without ever landing on it.
+- **A loss is said in words, not with a minus sign.** The tile reads "Lost 4,55K", not
+  "Earned −4,55K", and the readout has its own sentence. A half-typed rate — "" or a lone
+  "-" — falls back to zero rather than to the floor, or typing a minus would flash a 99,98 %
+  loss across the whole screen.
+
+## The figures are said as a projection, next to the figures
+
+The footer always carried a full disclaimer, but it sits under the fold, below the project
+list. The one line that matters — a constant rate, a projection, not a forecast — now sits
+directly under the headline balance, and the readout speaks in the conditional ("you would
+have earned", not "you have earned"). A calculator that compounds a typed-in rate is only
+misleading if its output reads as a statement of fact; this is the cheap way to make sure it
+does not.
+
+## Open-source notices are read off the bundle
+
+React, zustand, Capacitor and the Workbox runtime are MIT-licensed, and MIT asks for its
+notice to travel with the software; a minified bundle carries none. A small plugin in
+`vite.config.ts` writes `licenses.txt` from the modules Rollup actually put into the bundle,
+plus the native runtimes and Workbox by name, because those never pass through it. The app
+shows the file inside a `<details>` in the footer rather than linking to it: in the iOS
+shell, navigating the WebView to a plain text file leaves the app with no way back.
+
 ## Rates: a free feed, four fallbacks deep, and editable
 
 The sheet used GOOGLEFINANCE. The app uses open.er-api.com — no key, no account, one call.

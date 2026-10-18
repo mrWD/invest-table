@@ -16,11 +16,15 @@ export const sv = {
 
   'summary.after': { one: 'Efter {count} år', other: 'Efter {count} år' },
   'summary.caption': 'saldo, med all avkastning återinvesterad',
+  'summary.note': 'Vid konstant avkastning: en framräkning, ingen prognos.',
   'summary.paidIn': 'Insatt',
   'summary.earned': 'Intjänat',
+  'summary.lost': 'Förlorat',
   'summary.dividends': 'Utdelning, per månad',
   'summary.readout':
-    'Med {deposit} i månaden och {rate} avkastning på saldot varje månad — ungefär {daily} per dag — har du till andra månaden tjänat {income} och lagt undan {balance}. Vid {dividend} per år skulle slutsaldot ge {payout} i månaden i utdelning.',
+    'Med {deposit} i månaden och {rate} avkastning på saldot varje månad — ungefär {daily} per dag — skulle du till andra månaden ha tjänat {income} och lagt undan {balance}. Vid {dividend} per år skulle slutsaldot ge {payout} i månaden i utdelning.',
+  'summary.readoutLoss':
+    'Med {deposit} i månaden och {rate} förlust på saldot varje månad — ungefär {daily} per dag — skulle du till andra månaden ha förlorat {income} och ha {balance} kvar. Vid {dividend} per år skulle slutsaldot ge {payout} i månaden i utdelning.',
 
   'controls.title': 'Din plan',
   'controls.reset': 'Återställ',
@@ -77,4 +81,5 @@ export const sv = {
   'footer.privacy':
     'Allt stannar på den här enheten — det finns inget konto och ingen server som sparar dina siffror. Det enda som hämtas är växelkurserna, från open.er-api.com, och appen fungerar utan dem.',
   'footer.origin': 'Portad från kalkylbladet ”Revenue Chart” · build {build}',
+  'footer.licences': 'Licenser för öppen källkod',
 } satisfies Catalogue
