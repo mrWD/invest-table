@@ -71,7 +71,7 @@ export const id = {
 
   'support.title': 'Dukung',
   'support.text':
-    'InvestTable gratis, tanpa iklan, dan tidak mengumpulkan apa pun. Jika berguna bagi Anda, Anda bisa mendukungnya:',
+    'InvestTable gratis dan tanpa iklan. Jika berguna bagi Anda, Anda bisa mendukungnya:',
 
   'projects.title': 'Karya lain dari pembuatnya',
   'projects.all': 'Semua produk →',
@@ -79,7 +79,14 @@ export const id = {
   'footer.disclaimer':
     'Ini proyeksi, bukan ramalan. Diasumsikan imbal hasil yang Anda isi datang tiap bulan tanpa gagal dan ditanam kembali seluruhnya, serta tidak menghitung biaya, pajak, spread, maupun inflasi. Imbal hasil nyata berubah-ubah dan bisa negatif. Tidak ada di sini yang merupakan saran investasi.',
   'footer.privacy':
-    'Semuanya tetap di perangkat ini — tidak ada akun dan tidak ada server yang menyimpan angka Anda. Yang diambil dari jaringan hanya kurs mata uang, dari open.er-api.com, dan aplikasi tetap jalan tanpanya.',
+    'Angka Anda tetap di perangkat ini — tidak ada akun dan tidak ada server yang menyimpannya. Kurs mata uang diambil dari open.er-api.com, dan aplikasi tetap jalan tanpanya. Sekali sehari aplikasi mengirim hitungan penggunaan anonim (tanpa ID, tanpa angka Anda); sakelar di atas mematikannya.',
   'footer.origin': 'Dialihkan dari lembar kerja “Revenue Chart” · build {build}',
   'footer.licences': 'Lisensi sumber terbuka',
+
+  'usage.label': 'Bagikan statistik penggunaan anonim',
+  'usage.explain':
+    'Sekali sehari: fitur mana yang dipakai, versi aplikasi, platform, dan bahasa. Tanpa ID, tanpa angka Anda, tanpa apa pun yang Anda ketik.',
+  'usage.notice':
+    'InvestTable mengirim hitungan penggunaan anonim sekali sehari — tanpa ID, tanpa apa pun yang Anda ketik. Anda bisa mematikannya di bagian bawah halaman.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

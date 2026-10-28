@@ -110,9 +110,10 @@ export default defineConfig({
         navigateFallback: 'index.html',
         // The default set plus licenses.txt, so the notices open offline like everything else.
         globPatterns: ['**/*.{js,css,html,txt}'],
-        // The exchange rates are the only network call the app makes, and it works
-        // without them. Cached so an offline launch shows the last known rates
-        // instead of the bundled fallback.
+        // The exchange rates are the app's only GET besides its own files (the daily
+        // usage ping is a POST, which the worker leaves alone), and it works without
+        // them. Cached so an offline launch shows the last known rates instead of the
+        // bundled fallback.
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/open\.er-api\.com\/.*/,

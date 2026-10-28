@@ -80,8 +80,7 @@ export const cs = {
   'converter.offline': 'Offline — zobrazeny kurzy dodané s aplikací.',
 
   'support.title': 'Podpořit',
-  'support.text':
-    'InvestTable je zdarma, bez reklam a nic nesbírá. Pokud vám je užitečný, můžete ho podpořit:',
+  'support.text': 'InvestTable je zdarma a bez reklam. Pokud vám je užitečný, můžete ho podpořit:',
 
   'projects.title': 'Další od autora',
   'projects.all': 'Všechny produkty →',
@@ -89,7 +88,14 @@ export const cs = {
   'footer.disclaimer':
     'Jde o projekci, ne o předpověď. Předpokládá, že zadaný výnos přijde každý měsíc bez výjimky a je celý reinvestován, a nepočítá poplatky, daně, spready ani inflaci. Skutečné výnosy kolísají a mohou být záporné. Nic z toho není investiční doporučení.',
   'footer.privacy':
-    'Vše zůstává v tomto zařízení — není zde žádný účet ani server, který by vaše čísla uchovával. Stahují se jen kurzy měn, z open.er-api.com, a aplikace funguje i bez nich.',
+    'Vaše čísla zůstávají v tomto zařízení — není zde žádný účet ani server, který by je uchovával. Kurzy měn se stahují z open.er-api.com a aplikace funguje i bez nich. Jednou denně odesílá anonymní počty používání (bez ID a bez vašich čísel); přepínač výše to vypne.',
   'footer.origin': 'Portováno z tabulky „Revenue Chart“ · build {build}',
   'footer.licences': 'Licence open source',
+
+  'usage.label': 'Sdílet anonymní statistiky používání',
+  'usage.explain':
+    'Jednou denně: které funkce byly použity, verze aplikace, platforma a jazyk. Žádná ID, žádná vaše čísla ani nic, co napíšete.',
+  'usage.notice':
+    'InvestTable jednou denně odesílá anonymní počty používání — žádná ID, nic z toho, co napíšete. Vypnout to můžete dole na stránce.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import type { Projection } from '../lib/projection.ts'
 import type { I18n } from '../i18n/index.ts'
+import { count } from '../lib/metrics.ts'
 import { useSettings } from '../store/settings.ts'
 
 /**
@@ -141,7 +142,11 @@ export function GrowthChart({
               key={scale}
               type="button"
               aria-pressed={chartScale === scale}
-              onClick={() => set('chartScale', scale)}
+              onClick={() => {
+                if (scale === chartScale) return
+                set('chartScale', scale)
+                count('chart_scale_changed')
+              }}
             >
               {scale === 'linear' ? t('chart.linear') : t('chart.log')}
             </button>

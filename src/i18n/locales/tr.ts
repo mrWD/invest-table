@@ -71,7 +71,7 @@ export const tr = {
 
   'support.title': 'Destek ol',
   'support.text':
-    'InvestTable ücretsizdir, reklam içermez ve hiçbir şey toplamaz. İşinize yarıyorsa destek olabilirsiniz:',
+    'InvestTable ücretsizdir ve reklam içermez. İşinize yarıyorsa destek olabilirsiniz:',
 
   'projects.title': 'Geliştiricinin diğer işleri',
   'projects.all': 'Tüm ürünler →',
@@ -79,7 +79,14 @@ export const tr = {
   'footer.disclaimer':
     'Bu bir projeksiyondur, tahmin değil. Girdiğiniz getirinin her ay aksamadan geldiğini ve tamamının yeniden yatırıldığını varsayar; komisyon, vergi, makas ve enflasyonu hesaba katmaz. Gerçek getiriler değişir ve negatif olabilir. Buradaki hiçbir şey yatırım tavsiyesi değildir.',
   'footer.privacy':
-    'Her şey bu cihazda kalır — rakamlarınızı tutan bir hesap ya da sunucu yoktur. İnternetten yalnızca döviz kurları alınır, open.er-api.com üzerinden, ve uygulama onlarsız da çalışır.',
+    'Rakamlarınız bu cihazda kalır — onları tutan bir hesap ya da sunucu yoktur. Döviz kurları open.er-api.com üzerinden alınır ve uygulama onlarsız da çalışır. Günde bir kez anonim kullanım sayıları gönderir (kimlik yok, rakamlarınız yok); yukarıdaki anahtar bunu kapatır.',
   'footer.origin': '“Revenue Chart” hesap tablosundan aktarıldı · yapı {build}',
   'footer.licences': 'Açık kaynak lisansları',
+
+  'usage.label': 'Anonim kullanım istatistiklerini paylaş',
+  'usage.explain':
+    'Günde bir kez: hangi özelliklerin kullanıldığı, uygulama sürümü, platform ve dil. Kimlik yok, rakamlarınız yok, yazdığınız hiçbir şey yok.',
+  'usage.notice':
+    'InvestTable günde bir kez anonim kullanım sayıları gönderir — kimlik yok, yazdığınız hiçbir şey yok. Bunu sayfanın en altından kapatabilirsiniz.',
+  'usage.dismiss': 'Tamam',
 } satisfies Catalogue

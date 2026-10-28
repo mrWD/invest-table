@@ -70,8 +70,7 @@ export const vi = {
   'converter.offline': 'Ngoại tuyến — đang hiển thị tỷ giá đi kèm ứng dụng.',
 
   'support.title': 'Ủng hộ',
-  'support.text':
-    'InvestTable miễn phí, không quảng cáo và không thu thập gì. Nếu thấy hữu ích, bạn có thể ủng hộ:',
+  'support.text': 'InvestTable miễn phí và không quảng cáo. Nếu thấy hữu ích, bạn có thể ủng hộ:',
 
   'projects.title': 'Sản phẩm khác của tác giả',
   'projects.all': 'Tất cả sản phẩm →',
@@ -79,7 +78,14 @@ export const vi = {
   'footer.disclaimer':
     'Đây là dự phóng, không phải dự báo. Nó giả định mức lợi nhuận bạn nhập về đều đặn hằng tháng và được tái đầu tư toàn bộ, đồng thời không tính phí, thuế, chênh lệch giá hay lạm phát. Lợi nhuận thực tế thay đổi và có thể âm. Không có nội dung nào ở đây là lời khuyên đầu tư.',
   'footer.privacy':
-    'Mọi thứ nằm lại trên thiết bị này — không có tài khoản và không có máy chủ nào giữ các con số của bạn. Thứ duy nhất tải về là tỷ giá, từ open.er-api.com, và ứng dụng vẫn chạy khi không có nó.',
+    'Các con số của bạn nằm lại trên thiết bị này — không có tài khoản và không có máy chủ nào giữ chúng. Tỷ giá được tải từ open.er-api.com, và ứng dụng vẫn chạy khi không có nó. Mỗi ngày một lần, ứng dụng gửi số lần sử dụng ẩn danh (không ID, không con số nào của bạn); công tắc ở trên sẽ tắt việc này.',
   'footer.origin': 'Chuyển từ bảng tính “Revenue Chart” · bản dựng {build}',
   'footer.licences': 'Giấy phép mã nguồn mở',
+
+  'usage.label': 'Chia sẻ thống kê sử dụng ẩn danh',
+  'usage.explain':
+    'Mỗi ngày một lần: những tính năng đã dùng, phiên bản ứng dụng, nền tảng và ngôn ngữ. Không ID, không con số nào của bạn, không gì bạn gõ.',
+  'usage.notice':
+    'InvestTable gửi số lần sử dụng ẩn danh mỗi ngày một lần — không ID, không gì bạn gõ. Bạn có thể tắt ở cuối trang.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

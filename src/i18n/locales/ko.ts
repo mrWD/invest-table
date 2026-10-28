@@ -70,8 +70,7 @@ export const ko = {
   'converter.offline': '오프라인 — 앱에 포함된 환율을 표시합니다.',
 
   'support.title': '후원',
-  'support.text':
-    'InvestTable은 무료이고 광고가 없으며 아무것도 수집하지 않습니다. 도움이 되었다면 후원할 수 있습니다:',
+  'support.text': 'InvestTable은 무료이고 광고가 없습니다. 도움이 되었다면 후원할 수 있습니다:',
 
   'projects.title': '만든 사람의 다른 작업',
   'projects.all': '모든 제품 →',
@@ -79,7 +78,12 @@ export const ko = {
   'footer.disclaimer':
     '예측이 아니라 추정입니다. 입력한 수익률이 매달 빠짐없이 발생하고 전액 재투자된다고 가정하며, 수수료·세금·스프레드·물가상승은 반영하지 않습니다. 실제 수익률은 변동하며 마이너스가 될 수도 있습니다. 여기 있는 어떤 내용도 투자 자문이 아닙니다.',
   'footer.privacy':
-    '모든 것이 이 기기에 남습니다 — 계정도, 숫자를 보관하는 서버도 없습니다. 네트워크로 받아오는 것은 환율(open.er-api.com)뿐이고, 없어도 앱은 동작합니다.',
+    '숫자는 이 기기에 남습니다 — 계정도, 숫자를 보관하는 서버도 없습니다. 환율은 open.er-api.com에서 받아오며, 없어도 앱은 동작합니다. 하루 한 번 익명 사용 횟수(ID나 숫자는 포함되지 않음)를 보내며, 위의 스위치로 끌 수 있습니다.',
   'footer.origin': '“Revenue Chart” 스프레드시트에서 이식 · 빌드 {build}',
   'footer.licences': '오픈 소스 라이선스',
+
+  'usage.label': '익명 사용 통계 공유',
+  'usage.explain': '하루 한 번: 사용한 기능, 앱 버전, 플랫폼, 언어. ID, 입력한 숫자나 내용은 포함되지 않습니다.',
+  'usage.notice': 'InvestTable은 하루 한 번 익명 사용 횟수를 보냅니다. ID나 입력한 내용은 포함되지 않습니다. 페이지 맨 아래에서 끌 수 있습니다.',
+  'usage.dismiss': '확인',
 } satisfies Catalogue

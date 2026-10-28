@@ -77,8 +77,7 @@ export const en = {
   'converter.offline': 'Offline — showing the rates this app shipped with.',
 
   'support.title': 'Support',
-  'support.text':
-    'InvestTable is free, has no ads and collects nothing. If it is useful to you, you can support it:',
+  'support.text': 'InvestTable is free and has no ads. If it is useful to you, you can support it:',
 
   'projects.title': 'More from the author',
   'projects.all': 'All products →',
@@ -86,9 +85,16 @@ export const en = {
   'footer.disclaimer':
     'A projection, not a forecast. It assumes the return you type in arrives every month without fail and is reinvested in full, and it counts no fees, taxes, spreads or inflation. Real returns vary and can be negative. Nothing here is investment advice.',
   'footer.privacy':
-    'Everything stays on this device — there is no account and no server holding your figures. Exchange rates are the one thing fetched, from open.er-api.com, and the app works without them.',
+    'Your figures stay on this device — there is no account and no server holding them. Exchange rates are fetched from open.er-api.com, and the app works without them. Once a day it sends anonymous usage counts (no IDs, none of your figures); the switch above turns that off.',
   'footer.origin': 'Ported from the “Revenue Chart” spreadsheet · build {build}',
   'footer.licences': 'Open-source licences',
+
+  'usage.label': 'Share anonymous usage statistics',
+  'usage.explain':
+    'Once a day: which features were used, app version, platform and language. No IDs, figures or anything you type.',
+  'usage.notice':
+    'InvestTable sends anonymous usage counts once a day — no IDs, nothing you type. You can turn this off at the bottom of the page.',
+  'usage.dismiss': 'OK',
 }
 
 export type Catalogue = typeof en

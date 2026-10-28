@@ -71,7 +71,7 @@ export const de = {
 
   'support.title': 'Unterstützen',
   'support.text':
-    'InvestTable ist kostenlos, ohne Werbung und sammelt nichts. Wenn es Ihnen nützt, können Sie es unterstützen:',
+    'InvestTable ist kostenlos und ohne Werbung. Wenn es Ihnen nützt, können Sie es unterstützen:',
 
   'projects.title': 'Mehr vom Autor',
   'projects.all': 'Alle Produkte →',
@@ -79,7 +79,14 @@ export const de = {
   'footer.disclaimer':
     'Eine Hochrechnung, keine Prognose. Sie unterstellt, dass die eingegebene Rendite jeden Monat ausnahmslos anfällt und vollständig wieder angelegt wird, und berücksichtigt weder Gebühren noch Steuern, Spreads oder Inflation. Reale Renditen schwanken und können negativ sein. Nichts davon ist eine Anlageberatung.',
   'footer.privacy':
-    'Alles bleibt auf diesem Gerät — es gibt kein Konto und keinen Server, der Ihre Zahlen speichert. Geladen werden allein die Wechselkurse, von open.er-api.com, und ohne sie funktioniert die App ebenfalls.',
+    'Ihre Zahlen bleiben auf diesem Gerät — es gibt kein Konto und keinen Server, der sie speichert. Die Wechselkurse kommen von open.er-api.com, und ohne sie funktioniert die App ebenfalls. Einmal am Tag sendet sie anonyme Nutzungszahlen (keine IDs, keine Ihrer Zahlen); der Schalter oben stellt das ab.',
   'footer.origin': 'Portiert aus der Tabelle „Revenue Chart“ · Build {build}',
   'footer.licences': 'Open-Source-Lizenzen',
+
+  'usage.label': 'Anonyme Nutzungsstatistik teilen',
+  'usage.explain':
+    'Einmal am Tag: welche Funktionen genutzt wurden, App-Version, Plattform und Sprache. Keine IDs, keine Ihrer Zahlen, nichts, was Sie eintippen.',
+  'usage.notice':
+    'InvestTable sendet einmal am Tag anonyme Nutzungszahlen — keine IDs, nichts, was Sie eintippen. Abschalten können Sie das unten auf der Seite.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

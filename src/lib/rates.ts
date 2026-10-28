@@ -2,7 +2,8 @@
  * Exchange rates for the converter the sheet built out of GOOGLEFINANCE.
  *
  * There is no key and no account behind this: open.er-api.com publishes a free daily
- * USD-based table, and it is the only network call the whole app makes. Everything
+ * USD-based table, and it is the app's only network call besides the once-a-day usage
+ * ping (lib/metrics). Everything
  * degrades in order — a live fetch, else the last fetch cached on the device, else the
  * figures the spreadsheet itself was showing. The rates are editable by hand as well, so
  * the converter still works on a plane with a stale cache and a rate the owner disagrees
@@ -12,6 +13,7 @@
  * three pairs all involve it.
  */
 import type { CurrencyCode } from './format.ts'
+import { countError } from './metrics.ts'
 
 export interface Rates {
   /** US dollars for one euro. */
@@ -91,12 +93,18 @@ export async function refreshRates(current: RatesState): Promise<RatesState | nu
 
   try {
     const response = await fetch(ENDPOINT, { signal: AbortSignal.timeout(6000) })
-    if (!response.ok) return null
+    if (!response.ok) {
+      countError('api_rates')
+      return null
+    }
 
     const body = (await response.json()) as { result?: string; rates?: Record<string, number> }
     const eur = body.rates?.EUR
     const rub = body.rates?.RUB
-    if (body.result !== 'success' || !eur || !rub) return null
+    if (body.result !== 'success' || !eur || !rub) {
+      countError('api_rates')
+      return null
+    }
 
     // Four decimals: finer than any retail rate anyone will ever get, and it keeps the
     // editable fields from showing a number like 1,156581469020387.
@@ -112,7 +120,9 @@ export async function refreshRates(current: RatesState): Promise<RatesState | nu
     writeCache(fresh)
     return { ...fresh, source: 'live' }
   } catch {
-    // Offline, blocked, or slow. The caller keeps what it had.
+    // Offline, blocked, or slow. The caller keeps what it had — and the failure is
+    // counted by its source only, for the daily usage ping (lib/metrics).
+    countError('api_rates')
     return null
   }
 }

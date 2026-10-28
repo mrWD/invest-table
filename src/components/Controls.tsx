@@ -8,6 +8,7 @@ import {
 } from '../lib/projection.ts'
 import { LANGUAGES } from '../i18n/index.ts'
 import type { I18n } from '../i18n/index.ts'
+import { count, countSettled } from '../lib/metrics.ts'
 import { INCOME_LIMITS, LIMITS, useSettings } from '../store/settings.ts'
 import { NumberField } from './NumberField.tsx'
 
@@ -48,6 +49,7 @@ export function Controls({ i18n }: { i18n: I18n }) {
           onClick={() => {
             reset()
             setGeneration((n) => n + 1)
+            count('reset')
           }}
         >
           {t('controls.reset')}
@@ -63,7 +65,10 @@ export function Controls({ i18n }: { i18n: I18n }) {
         scale="log"
         {...LIMITS.deposit}
         sliderLabel={t('controls.slider', { label: t('controls.deposit') })}
-        onChange={(value) => set('deposit', value)}
+        onChange={(value) => {
+          set('deposit', value)
+          countSettled('inputs_changed')
+        }}
       />
 
       <NumberField
@@ -92,7 +97,10 @@ export function Controls({ i18n }: { i18n: I18n }) {
         scale="signedLog"
         {...INCOME_LIMITS[incomePeriod]}
         sliderLabel={t('controls.slider', { label: t('controls.income') })}
-        onChange={setIncome}
+        onChange={(value) => {
+          setIncome(value)
+          countSettled('inputs_changed')
+        }}
       />
 
       <NumberField
@@ -104,7 +112,10 @@ export function Controls({ i18n }: { i18n: I18n }) {
         value={dividendPct}
         {...LIMITS.dividendPct}
         sliderLabel={t('controls.slider', { label: t('controls.dividend') })}
-        onChange={(value) => set('dividendPct', value)}
+        onChange={(value) => {
+          set('dividendPct', value)
+          countSettled('inputs_changed')
+        }}
       />
 
       <NumberField
@@ -115,7 +126,10 @@ export function Controls({ i18n }: { i18n: I18n }) {
         value={years}
         {...LIMITS.years}
         sliderLabel={t('controls.slider', { label: t('controls.years') })}
-        onChange={(value) => set('years', value)}
+        onChange={(value) => {
+          set('years', value)
+          countSettled('inputs_changed')
+        }}
       />
     </section>
   )
@@ -142,7 +156,10 @@ function PeriodPicker({ i18n }: { i18n: I18n }) {
       <span className="visually-hidden">{i18n.t('controls.ratePeriod')}</span>
       <select
         value={incomePeriod}
-        onChange={(event) => set('incomePeriod', event.target.value as RatePeriod)}
+        onChange={(event) => {
+          set('incomePeriod', event.target.value as RatePeriod)
+          count('period_changed')
+        }}
       >
         {(Object.keys(PERIOD_UNITS) as RatePeriod[]).map((period) => (
           <option key={period} value={period}>
@@ -166,7 +183,11 @@ export function CurrencyPicker({ i18n }: { i18n: I18n }) {
           type="button"
           aria-pressed={currency === code}
           aria-label={i18n.t(`currency.${code}` as 'currency.EUR')}
-          onClick={() => set('currency', code)}
+          onClick={() => {
+            if (code === currency) return
+            set('currency', code)
+            count('currency_changed')
+          }}
         >
           {CURRENCY_SYMBOLS[code]}
         </button>
@@ -187,7 +208,13 @@ export function LanguagePicker({ i18n }: { i18n: I18n }) {
   return (
     <label className="language-picker">
       <span className="visually-hidden">{i18n.t('app.language')}</span>
-      <select value={language} onChange={(event) => set('language', event.target.value)}>
+      <select
+        value={language}
+        onChange={(event) => {
+          set('language', event.target.value)
+          count('language_changed')
+        }}
+      >
         {LANGUAGES.map((option) => (
           <option key={option.code} value={option.code} lang={option.code}>
             {option.name}

@@ -70,8 +70,7 @@ export const es = {
   'converter.offline': 'Sin conexión: se muestran los tipos incluidos en la app.',
 
   'support.title': 'Apoyar',
-  'support.text':
-    'InvestTable es gratis, no tiene anuncios y no recoge nada. Si te resulta útil, puedes apoyarlo:',
+  'support.text': 'InvestTable es gratis y no tiene anuncios. Si te resulta útil, puedes apoyarlo:',
 
   'projects.title': 'Más del autor',
   'projects.all': 'Todos los productos →',
@@ -79,7 +78,14 @@ export const es = {
   'footer.disclaimer':
     'Es una proyección, no un pronóstico. Da por hecho que el rendimiento que introduces llega todos los meses sin fallar y se reinvierte por completo, y no cuenta comisiones, impuestos, diferenciales ni inflación. Los rendimientos reales varían y pueden ser negativos. Nada de esto es asesoramiento de inversión.',
   'footer.privacy':
-    'Todo se queda en este dispositivo: no hay cuenta ni servidor que guarde tus cifras. Lo único que se descarga son los tipos de cambio, de open.er-api.com, y la app funciona sin ellos.',
+    'Tus cifras se quedan en este dispositivo: no hay cuenta ni servidor que las guarde. Los tipos de cambio se descargan de open.er-api.com, y la app funciona sin ellos. Una vez al día envía recuentos de uso anónimos (sin identificadores ni tus cifras); el interruptor de arriba lo desactiva.',
   'footer.origin': 'Portado de la hoja de cálculo «Revenue Chart» · build {build}',
   'footer.licences': 'Licencias de código abierto',
+
+  'usage.label': 'Compartir estadísticas de uso anónimas',
+  'usage.explain':
+    'Una vez al día: qué funciones se usaron, versión de la app, plataforma e idioma. Sin identificadores, sin tus cifras ni nada de lo que escribes.',
+  'usage.notice':
+    'InvestTable envía recuentos de uso anónimos una vez al día, sin identificadores ni nada de lo que escribes. Puedes desactivarlo al final de la página.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

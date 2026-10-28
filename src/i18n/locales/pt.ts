@@ -71,7 +71,7 @@ export const pt = {
 
   'support.title': 'Apoiar',
   'support.text':
-    'O InvestTable é gratuito, não tem anúncios e não coleta nada. Se ele for útil para você, pode apoiá-lo:',
+    'O InvestTable é gratuito e não tem anúncios. Se ele for útil para você, pode apoiá-lo:',
 
   'projects.title': 'Mais do autor',
   'projects.all': 'Todos os produtos →',
@@ -79,7 +79,14 @@ export const pt = {
   'footer.disclaimer':
     'É uma projeção, não uma previsão. Ela pressupõe que o rendimento informado chega todo mês sem falhar e é reinvestido por inteiro, e não conta taxas, impostos, spreads nem inflação. Rendimentos reais variam e podem ser negativos. Nada aqui é recomendação de investimento.',
   'footer.privacy':
-    'Tudo fica neste dispositivo — não há conta nem servidor guardando seus números. A única coisa baixada são as taxas de câmbio, de open.er-api.com, e o app funciona sem elas.',
+    'Seus números ficam neste dispositivo — não há conta nem servidor guardando-os. As taxas de câmbio vêm de open.er-api.com, e o app funciona sem elas. Uma vez por dia ele envia contagens de uso anônimas (sem identificadores, sem seus números); a chave acima desativa isso.',
   'footer.origin': 'Portado da planilha “Revenue Chart” · build {build}',
   'footer.licences': 'Licenças de código aberto',
+
+  'usage.label': 'Compartilhar estatísticas de uso anônimas',
+  'usage.explain':
+    'Uma vez por dia: quais recursos foram usados, versão do app, plataforma e idioma. Sem identificadores, sem seus números e nada do que você digita.',
+  'usage.notice':
+    'O InvestTable envia contagens de uso anônimas uma vez por dia — sem identificadores, nada do que você digita. Você pode desativar isso no fim da página.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

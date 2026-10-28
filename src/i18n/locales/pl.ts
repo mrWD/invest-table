@@ -81,7 +81,7 @@ export const pl = {
 
   'support.title': 'Wesprzyj',
   'support.text':
-    'InvestTable jest darmowy, nie ma reklam i niczego nie zbiera. Jeśli jest dla Ciebie przydatny, możesz go wesprzeć:',
+    'InvestTable jest darmowy i nie ma reklam. Jeśli jest dla Ciebie przydatny, możesz go wesprzeć:',
 
   'projects.title': 'Więcej od autora',
   'projects.all': 'Wszystkie produkty →',
@@ -89,7 +89,14 @@ export const pl = {
   'footer.disclaimer':
     'To projekcja, nie prognoza. Zakłada, że wpisany zwrot pojawia się co miesiąc bez wyjątku i jest w całości reinwestowany, i nie uwzględnia prowizji, podatków, spreadów ani inflacji. Rzeczywiste zwroty się wahają i mogą być ujemne. Nic tutaj nie jest poradą inwestycyjną.',
   'footer.privacy':
-    'Wszystko zostaje na tym urządzeniu — nie ma konta ani serwera przechowującego Twoje liczby. Pobierane są wyłącznie kursy walut, z open.er-api.com, a aplikacja działa również bez nich.',
+    'Twoje liczby zostają na tym urządzeniu — nie ma konta ani serwera, który by je przechowywał. Kursy walut pochodzą z open.er-api.com, a aplikacja działa również bez nich. Raz dziennie wysyła anonimowe liczniki użycia (bez identyfikatorów i Twoich liczb); przełącznik powyżej to wyłącza.',
   'footer.origin': 'Przeniesione z arkusza „Revenue Chart” · build {build}',
   'footer.licences': 'Licencje open source',
+
+  'usage.label': 'Udostępniaj anonimowe statystyki użycia',
+  'usage.explain':
+    'Raz dziennie: które funkcje były używane, wersja aplikacji, platforma i język. Bez identyfikatorów, Twoich liczb i niczego, co wpisujesz.',
+  'usage.notice':
+    'InvestTable raz dziennie wysyła anonimowe liczniki użycia — bez identyfikatorów, bez niczego, co wpisujesz. Możesz to wyłączyć na dole strony.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

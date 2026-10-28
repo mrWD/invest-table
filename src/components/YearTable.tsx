@@ -1,5 +1,6 @@
 import type { Projection } from '../lib/projection.ts'
 import type { I18n } from '../i18n/index.ts'
+import { count } from '../lib/metrics.ts'
 import { useSettings } from '../store/settings.ts'
 import { tapped } from '../native.ts'
 
@@ -44,6 +45,7 @@ export function YearTable({
               onClick={() => {
                 toggleYear(block.year)
                 tapped()
+                if (!open) count('year_expanded')
               }}
             >
               <span className="chevron" aria-hidden="true">

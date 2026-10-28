@@ -9,6 +9,7 @@ import { Support } from './components/Support.tsx'
 import { YearTable } from './components/YearTable.tsx'
 import { CURRENCY_SYMBOLS } from './lib/format.ts'
 import { donationsHidden } from './lib/from-app.ts'
+import { dismissMetricsNotice, setMetricsEnabled, useMetrics } from './lib/metrics.ts'
 import { project } from './lib/projection.ts'
 import { useI18n } from './i18n/index.ts'
 import { useSettings, type Theme } from './store/settings.ts'
@@ -27,6 +28,7 @@ export function App() {
     useSettings()
   const i18n = useI18n(language)
   const { t } = i18n
+  const metrics = useMetrics()
 
   const projection = useMemo(
     () => project({ deposit, incomePct: incomeMonthlyPct, dividendPct, years }),
@@ -69,6 +71,16 @@ export function App() {
         <CurrencyPicker i18n={i18n} />
       </header>
 
+      {/* Once, and quietly: a line of small print rather than a dialog in the way. */}
+      {metrics.notice && (
+        <p className="usage-notice" role="status">
+          <span>{t('usage.notice')}</span>
+          <button type="button" className="ghost-button" onClick={dismissMetricsNotice}>
+            {t('usage.dismiss')}
+          </button>
+        </p>
+      )}
+
       <main>
         <Summary projection={projection} symbol={symbol} i18n={i18n} />
 
@@ -104,6 +116,19 @@ export function App() {
           </div>
 
           <LanguagePicker i18n={i18n} />
+
+          <div className="usage-switch">
+            <label>
+              <input
+                type="checkbox"
+                role="switch"
+                checked={metrics.enabled}
+                onChange={(event) => setMetricsEnabled(event.target.checked)}
+              />
+              {t('usage.label')}
+            </label>
+            <p>{t('usage.explain')}</p>
+          </div>
         </div>
 
         <p>{t('footer.disclaimer')}</p>

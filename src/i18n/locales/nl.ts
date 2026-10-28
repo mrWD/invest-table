@@ -71,7 +71,7 @@ export const nl = {
 
   'support.title': 'Steunen',
   'support.text':
-    'InvestTable is gratis, heeft geen advertenties en verzamelt niets. Als je er wat aan hebt, kun je het steunen:',
+    'InvestTable is gratis en heeft geen advertenties. Als je er wat aan hebt, kun je het steunen:',
 
   'projects.title': 'Meer van de maker',
   'projects.all': 'Alle producten →',
@@ -79,7 +79,14 @@ export const nl = {
   'footer.disclaimer':
     'Een projectie, geen voorspelling. Ze gaat ervan uit dat het ingevoerde rendement elke maand zonder mankeren binnenkomt en volledig wordt herbelegd, en rekent geen kosten, belastingen, spreads of inflatie mee. Werkelijke rendementen wisselen en kunnen negatief zijn. Niets hiervan is beleggingsadvies.',
   'footer.privacy':
-    'Alles blijft op dit apparaat — er is geen account en geen server die je cijfers bewaart. Alleen de wisselkoersen worden opgehaald, bij open.er-api.com, en zonder die koersen werkt de app ook.',
+    'Je cijfers blijven op dit apparaat — er is geen account en geen server die ze bewaart. De wisselkoersen komen van open.er-api.com, en zonder die koersen werkt de app ook. Eén keer per dag stuurt de app anonieme gebruikstellingen (geen ID’s, geen cijfers van jou); met de schakelaar hierboven zet je dat uit.',
   'footer.origin': 'Overgezet uit het spreadsheet ‘Revenue Chart’ · build {build}',
   'footer.licences': 'Opensourcelicenties',
+
+  'usage.label': 'Anonieme gebruiksstatistieken delen',
+  'usage.explain':
+    'Eén keer per dag: welke functies zijn gebruikt, app-versie, platform en taal. Geen ID’s, geen cijfers van jou en niets wat je typt.',
+  'usage.notice':
+    'InvestTable stuurt één keer per dag anonieme gebruikstellingen — geen ID’s, niets wat je typt. Je kunt dit onderaan de pagina uitzetten.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

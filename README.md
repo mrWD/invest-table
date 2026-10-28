@@ -11,8 +11,10 @@ You type in what you pay in every month, what it earns every month, and what the
 pays in dividends every year. It projects the balance month by month, laid out in the same
 year blocks the sheet used, with the growth curve above it and a currency converter below.
 
-Everything stays on the device. There is no account, no server holding your figures, and
-the only thing ever fetched is the day's exchange rates — which the app works without.
+Your figures stay on the device. There is no account and no server holding them; the only
+thing fetched is the day's exchange rates — which the app works without. Once a day it sends
+anonymous usage counts (which features were used, the app version, platform and language; no
+IDs and none of your figures), and the switch in the footer turns that off.
 
 ## The model
 

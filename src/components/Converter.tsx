@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { CURRENCY_SYMBOLS, type CurrencyCode } from '../lib/format.ts'
+import { countSettled } from '../lib/metrics.ts'
 import { convert, loadRates, refreshRates, type RatesState } from '../lib/rates.ts'
 import type { I18n } from '../i18n/index.ts'
 import { useSettings } from '../store/settings.ts'
@@ -57,7 +58,10 @@ export function Converter({ finalBalance, i18n }: { finalBalance: number; i18n: 
             type="number"
             inputMode="decimal"
             value={draft ?? String(finalBalance)}
-            onChange={(event) => setDraft(event.target.value)}
+            onChange={(event) => {
+              setDraft(event.target.value)
+              countSettled('converter_used')
+            }}
             onFocus={(event) => event.target.select()}
           />
           <span className="unit">{CURRENCY_SYMBOLS[currency]}</span>
@@ -91,6 +95,7 @@ export function Converter({ finalBalance, i18n }: { finalBalance: number; i18n: 
               step="0.0001"
               min="0"
               onChange={(event) => {
+                countSettled('converter_used')
                 const next = Number.parseFloat(event.target.value)
                 setRates((current) => ({
                   ...current,

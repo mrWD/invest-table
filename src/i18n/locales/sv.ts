@@ -71,7 +71,7 @@ export const sv = {
 
   'support.title': 'Stöd',
   'support.text':
-    'InvestTable är gratis, har inga annonser och samlar inte in något. Om du har nytta av det kan du stödja det:',
+    'InvestTable är gratis och har inga annonser. Om du har nytta av det kan du stödja det:',
 
   'projects.title': 'Mer från utvecklaren',
   'projects.all': 'Alla produkter →',
@@ -79,7 +79,14 @@ export const sv = {
   'footer.disclaimer':
     'En projektion, inte en prognos. Den utgår från att avkastningen du skriver in kommer varje månad utan undantag och återinvesteras i sin helhet, och räknar varken avgifter, skatt, spreadar eller inflation. Verklig avkastning varierar och kan vara negativ. Inget här är investeringsrådgivning.',
   'footer.privacy':
-    'Allt stannar på den här enheten — det finns inget konto och ingen server som sparar dina siffror. Det enda som hämtas är växelkurserna, från open.er-api.com, och appen fungerar utan dem.',
+    'Dina siffror stannar på den här enheten — det finns inget konto och ingen server som sparar dem. Växelkurserna hämtas från open.er-api.com, och appen fungerar utan dem. En gång om dagen skickar den anonym användningsstatistik (inga id:n, inga av dina siffror); reglaget ovan stänger av det.',
   'footer.origin': 'Portad från kalkylbladet ”Revenue Chart” · build {build}',
   'footer.licences': 'Licenser för öppen källkod',
+
+  'usage.label': 'Dela anonym användningsstatistik',
+  'usage.explain':
+    'En gång om dagen: vilka funktioner som användes, appversion, plattform och språk. Inga id:n, inga av dina siffror, inget du skriver.',
+  'usage.notice':
+    'InvestTable skickar anonym användningsstatistik en gång om dagen — inga id:n, inget du skriver. Du kan stänga av det längst ned på sidan.',
+  'usage.dismiss': 'OK',
 } satisfies Catalogue

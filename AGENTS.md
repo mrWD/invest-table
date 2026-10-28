@@ -27,8 +27,9 @@ store builds.
    and 12, so a re-quoted rate tips them at *any* precision, and switching the unit would
    move the money. See DECISIONS.
 3. **No backend for user data.** The inputs live in `localStorage` on the device. No
-   accounts, no analytics, no collection. The single network call is the exchange-rate
-   feed, and the app is fully usable when it fails.
+   accounts, and no figure anyone types ever leaves it. Two network calls: the
+   exchange-rate feed and the once-a-day usage ping (principle 7); the app is fully
+   usable when either fails.
 4. **It must work offline.** Rates degrade live → device cache → the figures bundled from
    the sheet → whatever the owner types in by hand. None of those paths may be removed.
 5. **Absurd inputs are allowed, but the app does not open on one.** The sheet's 10 % a
@@ -41,6 +42,20 @@ store builds.
    Formatting is never hand-rolled either — numbers, compact notation, percentages, dates
    and plurals all come from `Intl` for the active locale, which is the only way "2500万",
    the lakh grouping and Arabic's six plural forms come out right.
+7. **Anonymous usage counts — and only counts — once a day.** "No analytics" stopped being
+   true on 2026-10-28, with the owner's consent: he wants to know how many people use the
+   app, and how, before deciding anything about ads or tips. `src/lib/metrics.ts` follows
+   the contract in `../app-metrics/docs/CLIENT.md` (the server is that sibling repo) and
+   sends one ping a day: counts of fixed event names (`inputs_changed`, `period_changed`,
+   `currency_changed`, `language_changed`, `chart_scale_changed`, `year_expanded`,
+   `converter_used`, `reset`), failed rate fetches as `api_rates`, uncaught errors by
+   `error.name`, the app version, platform, interface language, local date and the ISO
+   week of the first launch (`legacy` for devices whose saved inputs already differed from
+   the defaults). No identifier, none of the figures, no error messages. Sliders and typed
+   fields go through `countSettled`, so a drag through two hundred values is one
+   `inputs_changed`, not two hundred. On by default; off with the switch in the footer,
+   and on the web under Global Privacy Control; off deletes the unsent counts. Anything
+   new that is sent must go into the privacy policy on the products page first.
 
 ## How to run
 
@@ -77,6 +92,13 @@ through the browser panel, and is a required part of any noticeable change:
 - Reset with half-typed text still in a field — this was a real bug: the fields hold the
   draft until blur, so `Controls` keys them off a generation counter to force a remount;
 - a clean console.
+
+For the usage ping: run `node scripts/dev-server.mjs` in `../app-metrics` (it prints every
+body it receives) and put `VITE_METRICS_URL=http://localhost:8787/api/ping` in
+`.env.development.local` (gitignored). Faking `lastDay`/`lastWeek`/`lastMonth` back in the
+`invest-table:metrics` localStorage key and reloading sends the next day's ping. In `dev`,
+StrictMode runs the converter's fetch effect twice, so a dead rate feed counts two
+`api_rates`; a production build counts one.
 
 ## Working on the translations
 

@@ -953,3 +953,55 @@ input[type='range']:focus-visible::-webkit-slider-thumb {
 .rates-meta a {
   color: var(--ink-2);
 }
+
+/* ---------- usage statistics ----------
+ *
+ * The notice is small print under the masthead, shown until dismissed — never a dialog in
+ * front of the figures. The switch sits in the footer with the other preferences, on a row
+ * of its own so its explanation can wrap.
+ */
+
+.usage-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.usage-notice span {
+  flex: 1;
+  min-width: 0;
+}
+
+.usage-notice .ghost-button {
+  flex: none;
+}
+
+.usage-switch {
+  flex-basis: 100%;
+}
+
+.usage-switch label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.usage-switch input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--series-1);
+}
+
+.usage-switch p {
+  margin: 2px 0 0;
+  padding-inline-start: 24px;
+}

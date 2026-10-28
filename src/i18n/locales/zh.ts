@@ -70,7 +70,7 @@ export const zh = {
   'converter.offline': '离线 — 显示应用内置的汇率。',
 
   'support.title': '支持',
-  'support.text': 'InvestTable 免费、无广告，也不收集任何数据。如果它对你有用，可以支持一下：',
+  'support.text': 'InvestTable 免费、无广告。如果它对你有用，可以支持一下：',
 
   'projects.title': '作者的其他作品',
   'projects.all': '全部产品 →',
@@ -78,7 +78,12 @@ export const zh = {
   'footer.disclaimer':
     '这是推算，不是预测。它假设你填入的收益率每月如期到账并全额再投入，且不计手续费、税费、点差和通胀。真实收益会波动，也可能为负。此处内容均不构成投资建议。',
   'footer.privacy':
-    '一切都留在这台设备上——没有账号，也没有服务器保存你的数字。唯一联网获取的是汇率，来自 open.er-api.com，没有它应用照常可用。',
+    '你的数字留在这台设备上——没有账号，也没有服务器保存它们。汇率来自 open.er-api.com，没有它应用照常可用。应用每天发送一次匿名使用计数（不含 ID 和你的数字），上方的开关可以关闭。',
   'footer.origin': '移植自「Revenue Chart」表格 · 构建 {build}',
   'footer.licences': '开源许可',
+
+  'usage.label': '分享匿名使用统计',
+  'usage.explain': '每天一次：用过哪些功能、应用版本、平台和语言。不含任何 ID、你的数字或你输入的内容。',
+  'usage.notice': 'InvestTable 每天发送一次匿名使用计数——不含 ID，也不含你输入的任何内容。可以在页面底部关闭。',
+  'usage.dismiss': '确定',
 } satisfies Catalogue
