@@ -84,7 +84,7 @@ export const it = {
 
   'usage.label': 'Condividi statistiche d’uso anonime',
   'usage.explain':
-    'Una volta al giorno: quali funzioni sono state usate, versione dell’app, piattaforma e lingua. Nessun ID, nessuno dei tuoi numeri, niente di ciò che scrivi.',
+    'Una volta al giorno: quali funzioni sono state usate, versione dell’app, piattaforma, lingua e numero di errori. Nessun ID, nessuno dei tuoi numeri, niente di ciò che scrivi.',
   'usage.notice':
     'InvestTable invia una volta al giorno conteggi d’uso anonimi — nessun ID, niente di ciò che scrivi. Puoi disattivarlo in fondo alla pagina.',
   'usage.dismiss': 'OK',

@@ -83,7 +83,7 @@ export const ko = {
   'footer.licences': '오픈 소스 라이선스',
 
   'usage.label': '익명 사용 통계 공유',
-  'usage.explain': '하루 한 번: 사용한 기능, 앱 버전, 플랫폼, 언어. ID, 입력한 숫자나 내용은 포함되지 않습니다.',
+  'usage.explain': '하루 한 번: 사용한 기능, 앱 버전, 플랫폼, 언어, 오류 횟수. ID, 입력한 숫자나 내용은 포함되지 않습니다.',
   'usage.notice': 'InvestTable은 하루 한 번 익명 사용 횟수를 보냅니다. ID나 입력한 내용은 포함되지 않습니다. 페이지 맨 아래에서 끌 수 있습니다.',
   'usage.dismiss': '확인',
 } satisfies Catalogue

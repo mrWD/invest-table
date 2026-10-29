@@ -83,7 +83,7 @@ export const ja = {
   'footer.licences': 'オープンソースライセンス',
 
   'usage.label': '匿名の利用統計を共有',
-  'usage.explain': '一日一回：使われた機能、アプリのバージョン、プラットフォーム、言語。ID、入力した数値や内容は含みません。',
+  'usage.explain': '一日一回：使われた機能、アプリのバージョン、プラットフォーム、言語、エラーの件数。ID、入力した数値や内容は含みません。',
   'usage.notice': 'InvestTable は一日一回、匿名の利用回数を送信します。IDや入力した内容は含みません。ページの一番下でオフにできます。',
   'usage.dismiss': 'OK',
 } satisfies Catalogue

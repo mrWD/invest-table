@@ -85,7 +85,7 @@ export const id = {
 
   'usage.label': 'Bagikan statistik penggunaan anonim',
   'usage.explain':
-    'Sekali sehari: fitur mana yang dipakai, versi aplikasi, platform, dan bahasa. Tanpa ID, tanpa angka Anda, tanpa apa pun yang Anda ketik.',
+    'Sekali sehari: fitur mana yang dipakai, versi aplikasi, platform, bahasa, dan jumlah kesalahan. Tanpa ID, tanpa angka Anda, tanpa apa pun yang Anda ketik.',
   'usage.notice':
     'InvestTable mengirim hitungan penggunaan anonim sekali sehari — tanpa ID, tanpa apa pun yang Anda ketik. Anda bisa mematikannya di bagian bawah halaman.',
   'usage.dismiss': 'OK',

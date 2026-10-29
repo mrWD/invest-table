@@ -91,7 +91,7 @@ export const en = {
 
   'usage.label': 'Share anonymous usage statistics',
   'usage.explain':
-    'Once a day: which features were used, app version, platform and language. No IDs, figures or anything you type.',
+    'Once a day: which features were used, app version, platform, language and error counts. No IDs, figures or anything you type.',
   'usage.notice':
     'InvestTable sends anonymous usage counts once a day — no IDs, nothing you type. You can turn this off at the bottom of the page.',
   'usage.dismiss': 'OK',

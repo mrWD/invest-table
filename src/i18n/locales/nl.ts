@@ -85,7 +85,7 @@ export const nl = {
 
   'usage.label': 'Anonieme gebruiksstatistieken delen',
   'usage.explain':
-    'Eén keer per dag: welke functies zijn gebruikt, app-versie, platform en taal. Geen ID’s, geen cijfers van jou en niets wat je typt.',
+    'Eén keer per dag: welke functies zijn gebruikt, app-versie, platform, taal en aantallen fouten. Geen ID’s, geen cijfers van jou en niets wat je typt.',
   'usage.notice':
     'InvestTable stuurt één keer per dag anonieme gebruikstellingen — geen ID’s, niets wat je typt. Je kunt dit onderaan de pagina uitzetten.',
   'usage.dismiss': 'OK',

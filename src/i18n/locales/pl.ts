@@ -95,7 +95,7 @@ export const pl = {
 
   'usage.label': 'Udostępniaj anonimowe statystyki użycia',
   'usage.explain':
-    'Raz dziennie: które funkcje były używane, wersja aplikacji, platforma i język. Bez identyfikatorów, Twoich liczb i niczego, co wpisujesz.',
+    'Raz dziennie: które funkcje były używane, wersja aplikacji, platforma, język i liczba błędów. Bez identyfikatorów, Twoich liczb i niczego, co wpisujesz.',
   'usage.notice':
     'InvestTable raz dziennie wysyła anonimowe liczniki użycia — bez identyfikatorów, bez niczego, co wpisujesz. Możesz to wyłączyć na dole strony.',
   'usage.dismiss': 'OK',

@@ -85,7 +85,7 @@ export const sv = {
 
   'usage.label': 'Dela anonym användningsstatistik',
   'usage.explain':
-    'En gång om dagen: vilka funktioner som användes, appversion, plattform och språk. Inga id:n, inga av dina siffror, inget du skriver.',
+    'En gång om dagen: vilka funktioner som användes, appversion, plattform, språk och antal fel. Inga id:n, inga av dina siffror, inget du skriver.',
   'usage.notice':
     'InvestTable skickar anonym användningsstatistik en gång om dagen — inga id:n, inget du skriver. Du kan stänga av det längst ned på sidan.',
   'usage.dismiss': 'OK',

@@ -84,7 +84,7 @@ export const vi = {
 
   'usage.label': 'Chia sẻ thống kê sử dụng ẩn danh',
   'usage.explain':
-    'Mỗi ngày một lần: những tính năng đã dùng, phiên bản ứng dụng, nền tảng và ngôn ngữ. Không ID, không con số nào của bạn, không gì bạn gõ.',
+    'Mỗi ngày một lần: những tính năng đã dùng, phiên bản ứng dụng, nền tảng, ngôn ngữ và số lỗi. Không ID, không con số nào của bạn, không gì bạn gõ.',
   'usage.notice':
     'InvestTable gửi số lần sử dụng ẩn danh mỗi ngày một lần — không ID, không gì bạn gõ. Bạn có thể tắt ở cuối trang.',
   'usage.dismiss': 'OK',

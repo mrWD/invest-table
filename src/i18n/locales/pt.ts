@@ -85,7 +85,7 @@ export const pt = {
 
   'usage.label': 'Compartilhar estatísticas de uso anônimas',
   'usage.explain':
-    'Uma vez por dia: quais recursos foram usados, versão do app, plataforma e idioma. Sem identificadores, sem seus números e nada do que você digita.',
+    'Uma vez por dia: quais recursos foram usados, versão do app, plataforma, idioma e número de erros. Sem identificadores, sem seus números e nada do que você digita.',
   'usage.notice':
     'O InvestTable envia contagens de uso anônimas uma vez por dia — sem identificadores, nada do que você digita. Você pode desativar isso no fim da página.',
   'usage.dismiss': 'OK',

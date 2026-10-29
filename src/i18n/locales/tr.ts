@@ -85,7 +85,7 @@ export const tr = {
 
   'usage.label': 'Anonim kullanım istatistiklerini paylaş',
   'usage.explain':
-    'Günde bir kez: hangi özelliklerin kullanıldığı, uygulama sürümü, platform ve dil. Kimlik yok, rakamlarınız yok, yazdığınız hiçbir şey yok.',
+    'Günde bir kez: hangi özelliklerin kullanıldığı, uygulama sürümü, platform, dil ve hata sayıları. Kimlik yok, rakamlarınız yok, yazdığınız hiçbir şey yok.',
   'usage.notice':
     'InvestTable günde bir kez anonim kullanım sayıları gönderir — kimlik yok, yazdığınız hiçbir şey yok. Bunu sayfanın en altından kapatabilirsiniz.',
   'usage.dismiss': 'Tamam',

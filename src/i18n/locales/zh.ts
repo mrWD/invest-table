@@ -83,7 +83,7 @@ export const zh = {
   'footer.licences': '开源许可',
 
   'usage.label': '分享匿名使用统计',
-  'usage.explain': '每天一次：用过哪些功能、应用版本、平台和语言。不含任何 ID、你的数字或你输入的内容。',
+  'usage.explain': '每天一次：用过哪些功能、应用版本、平台、语言和错误次数。不含任何 ID、你的数字或你输入的内容。',
   'usage.notice': 'InvestTable 每天发送一次匿名使用计数——不含 ID，也不含你输入的任何内容。可以在页面底部关闭。',
   'usage.dismiss': '确定',
 } satisfies Catalogue

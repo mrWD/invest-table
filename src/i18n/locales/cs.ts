@@ -94,7 +94,7 @@ export const cs = {
 
   'usage.label': 'Sdílet anonymní statistiky používání',
   'usage.explain':
-    'Jednou denně: které funkce byly použity, verze aplikace, platforma a jazyk. Žádná ID, žádná vaše čísla ani nic, co napíšete.',
+    'Jednou denně: které funkce byly použity, verze aplikace, platforma, jazyk a počty chyb. Žádná ID, žádná vaše čísla ani nic, co napíšete.',
   'usage.notice':
     'InvestTable jednou denně odesílá anonymní počty používání — žádná ID, nic z toho, co napíšete. Vypnout to můžete dole na stránce.',
   'usage.dismiss': 'OK',
