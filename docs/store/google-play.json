@@ -1,0 +1,22 @@
+{
+  "packageName": "com.mrwd.investtable",
+  "defaultLanguage": "en-US",
+  "title": "InvestTable",
+  "shortDescription": "See what a monthly deposit could grow to. A projection, not investment advice.",
+  "fullDescription": "InvestTable is a compound interest calculator. Type what you put in every month, the return you want to try and how many years to run it, and it shows the balance month by month, with every return reinvested.\n\nIt started as a spreadsheet I used for this, and it still does the math the same way.\n\nWhat you set\n• The amount you pay in every month\n• The return, per month, per quarter or per year\n• Dividends, as a yearly percentage of what you hold\n• How many years to run it, from 1 to 30\n\nWhat you get\n• The balance at the end, how much of it you paid in and how much came from the returns\n• A chart of the balance against what you paid in, on a linear or a log scale\n• A month by month table for every year\n• Count in rubles, dollars or euros, and convert the final balance between them at rates from open.er-api.com or ones you type in yourself\n\nReturns can be negative too, so you can see what a bad stretch does to the same plan.\n\nThis is a projection, not a forecast. It assumes the same return every month, reinvested in full, and it counts no fees, taxes or inflation. Real returns vary and can be negative. The app names no funds, stocks or brokers, and nothing in it is investment advice.\n\nYour figures stay on your device. There is no account and no sign-up, and it works offline. Without a connection the converter uses the last rates it fetched, or the ones built into the app.\n\n20 languages, with numbers written the way your language writes them. Light, dark or automatic theme.\n\nPrivacy\nOnce a day the app sends anonymous usage counts: which features were used, the app version, platform, language and error counts. No IDs, none of your figures and nothing you type. The switch at the bottom of the page turns it off, and turning it off deletes the counts that were not sent yet. The privacy policy lists exactly what is sent.\n\nFree, no ads.",
+  "category": "FINANCE",
+  "contactEmail": "lvigtor@gmail.com",
+  "website": "https://mrwd.github.io/products/invest-table/",
+  "privacyPolicyUrl": "https://mrwd.github.io/legal/#app-stats",
+  "containsAds": false,
+  "financialFeatures": "none",
+  "dataSafety": {
+    "collected": [
+      { "category": "App activity › App interactions", "shared": false, "optional": true, "purposes": ["Analytics"] },
+      { "category": "App info and performance › Diagnostics", "shared": false, "optional": true, "purposes": ["Analytics"] }
+    ],
+    "encryptedInTransit": true,
+    "deletionRequest": "Nothing is linked to a user, so there is nothing to delete on request. Turning the switch at the bottom of the page off deletes the unsent counts on the device."
+  },
+  "contentRating": "Everyone"
+}

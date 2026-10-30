@@ -74,6 +74,12 @@ npm run build:native
 ```
 
 `node scripts/gen-icons.mjs` regenerates every raster from `public/favicon.svg`.
+`node scripts/store-screenshots.mjs` makes the store images from a fresh profile on the
+default inputs: iPhone 6.9", iPad 13" and Android screenshots in `docs/store/screenshots/`,
+and Play's feature graphic. It needs Playwright (`npm i --no-save playwright`, or
+`PLAYWRIGHT=<path>` to one on disk). The listing texts beside them are
+`docs/store/app-store.json` and `google-play.json`, in the format of
+`../store-release/SCHEMA.md`; `docs/STORE.md` summarises the answers.
 
 ## How to verify
 
